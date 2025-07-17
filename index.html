@@ -1,0 +1,1288 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROLKOM - Komarnici i Roletne</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Globalni stilovi */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #191919;
+            color: #c6c3ba;
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2.5rem;
+            color: #c6c3ba;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #7e7d7a;
+            color: #191919;
+            padding: 12px 30px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        .btn:hover {
+            background-color: #a2a09a;
+            transform: translateY(-3px);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #7e7d7a;
+            color: #c6c3ba;
+        }
+        
+        .btn-outline:hover {
+            background-color: #7e7d7a;
+            color: #191919;
+        }
+        
+        /* Header */
+        header {
+            background-color: #5b5b5b;
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #c6c3ba;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            color: #c6c3ba;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #a2a09a;
+        }
+        
+        /* Hero sekcija */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(rgba(25, 25, 25, 0.9), rgba(25, 25, 25, 0.9)), 
+                        url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+            padding-top: 80px;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: #c6c3ba;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            color: #a2a09a;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        /* O nama sekcija */
+        .about {
+            background-color: #5b5b5b;
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #c6c3ba;
+        }
+        
+        .about-text p {
+            margin-bottom: 15px;
+            color: #a2a09a;
+            line-height: 1.8;
+        }
+        
+        .about-image {
+            flex: 1;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        /* Usluge sekcija */
+        .services {
+            background-color: #191919;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background: #5b5b5b;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+            text-align: center;
+            padding: 40px 30px;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .service-icon {
+            font-size: 48px;
+            color: #7e7d7a;
+            margin-bottom: 20px;
+        }
+        
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #c6c3ba;
+        }
+        
+        .service-card p {
+            color: #a2a09a;
+            margin-bottom: 20px;
+        }
+        
+        /* Kontakt sekcija */
+        .contact {
+            background-color: #5b5b5b;
+        }
+        
+        .contact-container {
+            display: flex;
+            gap: 50px;
+        }
+        
+        .contact-form {
+            flex: 1;
+            background-color: #7e7d7a;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #191919;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #5b5b5b;
+            border-radius: 4px;
+            background-color: #a2a09a;
+            color: #191919;
+            font-size: 16px;
+        }
+        
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        .contact-info {
+            flex: 1;
+        }
+        
+        .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #c6c3ba;
+        }
+        
+        .contact-info p {
+            margin-bottom: 15px;
+            color: #a2a09a;
+            display: flex;
+            align-items: center;
+        }
+        
+        .contact-info i {
+            margin-right: 10px;
+            color: #c6c3ba;
+            width: 20px;
+            text-align: center;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #191919;
+            padding: 50px 0 20px;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+        
+        .footer-logo {
+            flex: 1;
+            text-align: left;
+        }
+        
+        .footer-logo h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #c6c3ba;
+        }
+        
+        .footer-links {
+            flex: 1;
+            text-align: left;
+        }
+        
+        .footer-links h4 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #c6c3ba;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #a2a09a;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: #c6c3ba;
+        }
+        
+        .footer-social {
+            flex: 1;
+            text-align: left;
+        }
+        
+        .footer-social h4 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #c6c3ba;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(198, 195, 186, 0.1);
+            border-radius: 50%;
+            color: #c6c3ba;
+            transition: all 0.3s;
+        }
+        
+        .social-icons a:hover {
+            background-color: #7e7d7a;
+            color: #191919;
+        }
+        
+        .copyright {
+            margin-top: 30px;
+            color: #a2a09a;
+            font-size: 14px;
+            border-top: 1px solid #5b5b5b;
+            padding-top: 20px;
+        }
+        
+        /* Kalkulator dugme */
+        .calculator-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #7e7d7a;
+            color: #191919;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            transition: all 0.3s;
+            z-index: 999;
+        }
+        
+        .calculator-btn:hover {
+            background-color: #a2a09a;
+            transform: scale(1.1);
+        }
+        
+        /* Kalkulator modal */
+        .calculator-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+        
+        .calculator-content {
+            background-color: #5b5b5b;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            position: relative;
+        }
+        
+        .calculator-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .calculator-header h2 {
+            color: #c6c3ba;
+            font-size: 1.8rem;
+        }
+        
+        .close-calculator {
+            background: none;
+            border: none;
+            color: #c6c3ba;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        .calculator-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .calculator-tab {
+            flex: 1;
+            padding: 12px;
+            background-color: #7e7d7a;
+            color: #191919;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .calculator-tab:hover {
+            background-color: #a2a09a;
+        }
+        
+        .calculator-tab.active {
+            background-color: #c6c3ba;
+        }
+        
+        .calculator-pane {
+            display: none;
+        }
+        
+        .calculator-pane.active {
+            display: block;
+        }
+        
+        .calculator-form {
+            background-color: #7e7d7a;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .form-group-calc {
+            flex: 1;
+        }
+        
+        .form-group-calc label {
+            display: block;
+            margin-bottom: 5px;
+            color: #191919;
+            font-weight: 500;
+        }
+        
+        .form-group-calc input,
+        .form-group-calc select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #5b5b5b;
+            border-radius: 4px;
+            background-color: #a2a09a;
+            color: #191919;
+        }
+        
+        .checkbox-group {
+            margin: 15px 0;
+        }
+        
+        .checkbox-group label {
+            display: flex;
+            align-items: center;
+            color: #191919;
+        }
+        
+        .checkbox-group input {
+            margin-right: 10px;
+        }
+        
+        .quote-items {
+            background-color: #7e7d7a;
+            padding: 20px;
+            border-radius: 8px;
+            min-height: 150px;
+            margin-bottom: 20px;
+        }
+        
+        .quote-item {
+            padding: 10px;
+            border-bottom: 1px solid #5b5b5b;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .quote-item-details {
+            flex: 1;
+        }
+        
+        .quote-item-type {
+            font-weight: 600;
+            color: #191919;
+        }
+        
+        .quote-item-desc {
+            font-size: 0.9rem;
+            color: #191919;
+        }
+        
+        .quote-item-price {
+            font-weight: 600;
+            color: #191919;
+        }
+        
+        .quote-total {
+            text-align: right;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: #191919;
+            padding: 10px;
+        }
+        
+        .quote-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .quote-actions .btn {
+            flex: 1;
+        }
+        
+        /* Responsive dizajn */
+        @media (max-width: 992px) {
+            .about-content,
+            .contact-container {
+                flex-direction: column;
+            }
+            
+            .about-image {
+                margin-top: 30px;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                gap: 30px;
+            }
+            
+            .footer-logo,
+            .footer-links,
+            .footer-social {
+                text-align: center;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .calculator-content {
+                margin: 20px auto;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">ROLKOM</div>
+                <ul class="nav-links">
+                    <li><a href="#home">Početna</a></li>
+                    <li><a href="#about">O nama</a></li>
+                    <li><a href="#services">Usluge</a></li>
+                    <li><a href="#contact">Kontakt</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero sekcija -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Profesionalni komarnici i roletne po mjeri</h1>
+                <p>Visokokvalitetna rješenja za zaštitu vašeg doma od insekata i sunca. Naši proizvodi kombinuju funkcionalnost i stil, pružajući vam potpunu zaštitu i privatnost.</p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn">Kontaktirajte nas</a>
+                    <button id="openCalculatorHero" class="btn btn-outline">Izračunaj sam</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- O nama sekcija -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">O nama</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Naša priča</h3>
+                    <p>ROLKOM je osnovan sa ciljem da pruži najkvalitetnija rješenja za zaštitu prozora i vrata. Sa više od 10 godina iskustva u industriji, postali smo prepoznatljivi po izuzetnoj kvaliteti i pažnji prema detaljima.</p>
+                    <p>Naš tim stručnjaka posvećen je pružanju vrhunskih usluga i proizvoda koji zadovoljavaju najviše standarde. Koristimo samo najkvalitetnije materijale od provjerenih dobavljača.</p>
+                    <p>Bez obzira da li vam trebaju komarnici za zaštitu od insekata ili roletne za kontrolu svjetla i privatnost, mi imamo idealno rješenje za vaše potrebe.</p>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1605146769289-440113cc3d00?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Montaža roletni">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Usluge sekcija -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title">Naše usluge</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-window-maximize"></i>
+                    </div>
+                    <h3>Harmo komarnici</h3>
+                    <p>Harmonika komarnici za prozore i vrata. Dostupni u bijeloj, smeđoj i sivoj boji.</p>
+                    <div class="price">Od 199 KM</div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-border-all"></i>
+                    </div>
+                    <h3>Fiksni komarnici</h3>
+                    <p>Čvrsti okviri s mrežom za trajnu montažu. Idealno za redovite otvore.</p>
+                    <div class="price">Od 249 KM</div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-th-large"></i>
+                    </div>
+                    <h3>Utapajući komarnici</h3>
+                    <p>Moderna rješenja koja se utapaju u okvir prozora. Dostupni u svim RAL bojama.</p>
+                    <div class="price">Od 399 KM</div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-blinds"></i>
+                    </div>
+                    <h3>Aluminijske roletne</h3>
+                    <p>Klasične ručne i moderne električne roletne. Dostupne u više boja i debljina.</p>
+                    <div class="price">Od 899 KM</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kontakt sekcija -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Kontaktirajte nas</h2>
+            <div class="contact-container">
+                <form class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Ime i prezime</label>
+                        <input type="text" id="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email adresa</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Broj telefona</label>
+                        <input type="tel" id="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Poruka</label>
+                        <textarea id="message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Pošalji poruku</button>
+                </form>
+                <div class="contact-info">
+                    <h3>Kontakt podaci</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Krndija bb, Tešanj 74260</p>
+                    <p><i class="fas fa-phone"></i> +387 61 988 699</p>
+                    <p><i class="fas fa-envelope"></i> info@rolkom.ba</p>
+                    <p><i class="fas fa-clock"></i> Radno vrijeme: Pon-Pet 08:00-16:00</p>
+                    <p><i class="fas fa-truck"></i> Besplatna montaža za narudžbe preko 1000 KM</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h3>ROLKOM</h3>
+                    <p>Komarnici i roletne po mjeri</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Linkovi</h4>
+                    <ul>
+                        <li><a href="#home">Početna</a></li>
+                        <li><a href="#about">O nama</a></li>
+                        <li><a href="#services">Usluge</a></li>
+                        <li><a href="#contact">Kontakt</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h4>Pratite nas</h4>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 ROLKOM. Sva prava pridržana.</p>
+                <p>Krndija bb, Tešanj 74260, Bosna i Hercegovina</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Kalkulator dugme -->
+    <div class="calculator-btn" id="calculatorBtn">
+        <i class="fas fa-calculator"></i>
+    </div>
+
+    <!-- Kalkulator modal -->
+    <div class="calculator-modal" id="calculatorModal">
+        <div class="calculator-content">
+            <div class="calculator-header">
+                <h2>Kreiranje ponude</h2>
+                <button class="close-calculator" id="closeCalculator">&times;</button>
+            </div>
+            
+            <div class="calculator-tabs">
+                <button class="calculator-tab active" data-pane="client">Podaci o klijentu</button>
+                <button class="calculator-tab" data-pane="roletne">Roletne</button>
+                <button class="calculator-tab" data-pane="komarnici">Komarnici</button>
+            </div>
+            
+            <!-- Klijent pane -->
+            <div class="calculator-pane active" id="clientPane">
+                <div class="calculator-form">
+                    <div class="form-group-calc">
+                        <label for="clientName">Za koga se radi ponuda</label>
+                        <input type="text" id="clientName" placeholder="Ime i prezime klijenta" required>
+                    </div>
+                    <div class="form-group-calc">
+                        <label for="clientAddress">Adresa</label>
+                        <input type="text" id="clientAddress" placeholder="Adresa montaže">
+                    </div>
+                    <div class="form-group-calc">
+                        <label for="clientPhone">Broj telefona</label>
+                        <input type="tel" id="clientPhone" placeholder="Telefon klijenta">
+                    </div>
+                    <div class="form-group-calc">
+                        <label for="clientEmail">Email adresa</label>
+                        <input type="email" id="clientEmail" placeholder="Email klijenta">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Roletne pane -->
+            <div class="calculator-pane" id="roletnePane">
+                <div class="calculator-form">
+                    <div class="form-row">
+                        <div class="form-group-calc">
+                            <label for="roletnaType">Vrsta roletne</label>
+                            <select id="roletnaType">
+                                <option value="rucna">Ručna roletna</option>
+                                <option value="elektricna">Električna roletna</option>
+                                <option value="smart">Pametna roletna</option>
+                            </select>
+                        </div>
+                        <div class="form-group-calc">
+                            <label for="roletnaMaterial">Materijal</label>
+                            <select id="roletnaMaterial">
+                                <option value="aluminij">Aluminij</option>
+                                <option value="plastika">Plastika</option>
+                                <option value="kombinovana">Kombinovana</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group-calc">
+                            <label for="width">Širina (cm)</label>
+                            <input type="number" id="width" min="50" max="300" placeholder="Unesite širinu">
+                        </div>
+                        <div class="form-group-calc">
+                            <label for="height">Visina (cm)</label>
+                            <input type="number" id="height" min="50" max="300" placeholder="Unesite visinu">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group-calc">
+                        <label for="color">Boja</label>
+                        <select id="color">
+                            <option value="bijela">Bijela</option>
+                            <option value="smedja">Smeđa</option>
+                            <option value="siva">Siva</option>
+                            <option value="ral">RAL boja</option>
+                        </select>
+                    </div>
+                    
+                    <div class="checkbox-group">
+                        <label>
+                            <input type="checkbox" id="montazaRoletna"> Montaža (+50 KM)
+                        </label>
+                    </div>
+                    
+                    <button class="btn" id="addRoletna">Dodaj roletnu u ponudu</button>
+                </div>
+            </div>
+            
+            <!-- Komarnici pane -->
+            <div class="calculator-pane" id="komarniciPane">
+                <div class="calculator-form">
+                    <div class="form-group-calc">
+                        <label for="komarnikType">Vrsta komarnika</label>
+                        <select id="komarnikType">
+                            <option value="harmo">Harmo komarnik</option>
+                            <option value="fiksni">Fiksni komarnik</option>
+                            <option value="utapajuci">Utapajući komarnik</option>
+                            <option value="roletni">Roletni komarnik</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group-calc">
+                            <label for="komarnikWidth">Širina (cm)</label>
+                            <input type="number" id="komarnikWidth" min="30" max="200" placeholder="Unesite širinu">
+                        </div>
+                        <div class="form-group-calc">
+                            <label for="komarnikHeight">Visina (cm)</label>
+                            <input type="number" id="komarnikHeight" min="30" max="200" placeholder="Unesite visinu">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group-calc">
+                        <label for="komarnikColor">Boja</label>
+                        <select id="komarnikColor">
+                            <option value="bijela">Bijela</option>
+                            <option value="smedja">Smeđa</option>
+                            <option value="siva">Siva</option>
+                            <option value="ral">RAL boja</option>
+                        </select>
+                    </div>
+                    
+                    <div class="checkbox-group">
+                        <label>
+                            <input type="checkbox" id="vrata"> Za vrata
+                        </label>
+                    </div>
+                    
+                    <div class="checkbox-group">
+                        <label>
+                            <input type="checkbox" id="montazaKomarnik"> Montaža (+30 KM)
+                        </label>
+                    </div>
+                    
+                    <button class="btn" id="addKomarnik">Dodaj komarnik u ponudu</button>
+                </div>
+            </div>
+            
+            <!-- Prikaz ponude -->
+            <div class="quote-items" id="quoteItems">
+                <p style="text-align: center; color: #191919;">Nema stavki u ponudi</p>
+            </div>
+            
+            <div class="quote-total" id="quoteTotal">
+                Ukupno: 0.00 KM
+            </div>
+            
+            <div class="quote-actions">
+                <button class="btn" id="clearQuote">Obriši ponudu</button>
+                <button class="btn" id="generateQuote">Generiši ponudu</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Kalkulator funkcionalnost
+        document.addEventListener('DOMContentLoaded', function() {
+            const calculatorBtn = document.getElementById('calculatorBtn');
+            const openCalculatorHero = document.getElementById('openCalculatorHero');
+            const calculatorModal = document.getElementById('calculatorModal');
+            const closeCalculator = document.getElementById('closeCalculator');
+            const calculatorTabs = document.querySelectorAll('.calculator-tab');
+            const calculatorPanes = document.querySelectorAll('.calculator-pane');
+            
+            // Otvaranje kalkulatora
+            function openCalculator() {
+                calculatorModal.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+            }
+            
+            // Zatvaranje kalkulatora
+            function closeCalc() {
+                calculatorModal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+            
+            // Event listeners
+            calculatorBtn.addEventListener('click', openCalculator);
+            openCalculatorHero.addEventListener('click', openCalculator);
+            closeCalculator.addEventListener('click', closeCalc);
+            
+            // Tab funkcionalnost
+            calculatorTabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    const paneId = tab.getAttribute('data-pane');
+                    
+                    // Ukloni active klasu sa svih tabova
+                    calculatorTabs.forEach(t => t.classList.remove('active'));
+                    calculatorPanes.forEach(p => p.classList.remove('active'));
+                    
+                    // Dodaj active klasu na odabrani tab i pane
+                    tab.classList.add('active');
+                    document.getElementById(`${paneId}Pane`).classList.add('active');
+                });
+            });
+            
+            // Ponuda funkcionalnost
+            let quoteItems = [];
+            const quoteItemsContainer = document.getElementById('quoteItems');
+            const quoteTotal = document.getElementById('quoteTotal');
+            
+            // Dodaj roletnu
+            document.getElementById('addRoletna').addEventListener('click', function() {
+                const type = document.getElementById('roletnaType').value;
+                const material = document.getElementById('roletnaMaterial').value;
+                const width = document.getElementById('width').value;
+                const height = document.getElementById('height').value;
+                const color = document.getElementById('color').value;
+                const montaza = document.getElementById('montazaRoletna').checked;
+                
+                if (!width || !height) {
+                    alert('Molimo unesite širinu i visinu!');
+                    return;
+                }
+                
+                const price = calculateRoletnaPrice(type, material, width, height, montaza);
+                const item = {
+                    type: 'Roletna',
+                    name: getRoletnaName(type),
+                    material: material,
+                    width: width,
+                    height: height,
+                    color: color,
+                    montaza: montaza,
+                    price: price
+                };
+                
+                quoteItems.push(item);
+                updateQuote();
+            });
+            
+            // Dodaj komarnik
+            document.getElementById('addKomarnik').addEventListener('click', function() {
+                const type = document.getElementById('komarnikType').value;
+                const width = document.getElementById('komarnikWidth').value;
+                const height = document.getElementById('komarnikHeight').value;
+                const color = document.getElementById('komarnikColor').value;
+                const vrata = document.getElementById('vrata').checked;
+                const montaza = document.getElementById('montazaKomarnik').checked;
+                
+                if (!width || !height) {
+                    alert('Molimo unesite širinu i visinu!');
+                    return;
+                }
+                
+                const price = calculateKomarnikPrice(type, width, height, vrata, montaza);
+                const item = {
+                    type: 'Komarnik',
+                    name: getKomarnikName(type),
+                    width: width,
+                    height: height,
+                    color: color,
+                    vrata: vrata,
+                    montaza: montaza,
+                    price: price
+                };
+                
+                quoteItems.push(item);
+                updateQuote();
+            });
+            
+            // Obriši ponudu
+            document.getElementById('clearQuote').addEventListener('click', function() {
+                quoteItems = [];
+                updateQuote();
+            });
+            
+            // Generiši ponudu
+            document.getElementById('generateQuote').addEventListener('click', function() {
+                const clientName = document.getElementById('clientName').value;
+                
+                if (!clientName) {
+                    alert('Molimo unesite ime klijenta!');
+                    return;
+                }
+                
+                if (quoteItems.length === 0) {
+                    alert('Ponuda nema stavki!');
+                    return;
+                }
+                
+                generateQuote(clientName);
+            });
+            
+            // Funkcije za izračun cijene
+            function calculateRoletnaPrice(type, material, width, height, montaza) {
+                let basePrice = 0;
+                const area = (width * height) / 10000;
+                
+                // Cijena po tipu
+                if (type === 'rucna') basePrice = area * 120;
+                else if (type === 'elektricna') basePrice = area * 180;
+                else if (type === 'smart') basePrice = area * 220;
+                
+                // Dodatak za materijal
+                if (material === 'aluminij') basePrice += area * 30;
+                else if (material === 'kombinovana') basePrice += area * 15;
+                
+                // Dodatak za montažu
+                if (montaza) basePrice += 50;
+                
+                return basePrice.toFixed(2);
+            }
+            
+            function calculateKomarnikPrice(type, width, height, vrata, montaza) {
+                let basePrice = 0;
+                const area = (width * height) / 10000;
+                
+                // Cijena po tipu
+                if (type === 'harmo') basePrice = area * 80;
+                else if (type === 'fiksni') basePrice = area * 100;
+                else if (type === 'utapajuci') basePrice = area * 150;
+                else if (type === 'roletni') basePrice = area * 200;
+                
+                // Dodatak za vrata
+                if (vrata) basePrice += 100;
+                
+                // Dodatak za montažu
+                if (montaza) basePrice += 30;
+                
+                return basePrice.toFixed(2);
+            }
+            
+            // Funkcije za nazive
+            function getRoletnaName(type) {
+                if (type === 'rucna') return 'Ručna roletna';
+                if (type === 'elektricna') return 'Električna roletna';
+                if (type === 'smart') return 'Pametna roletna';
+                return 'Roletna';
+            }
+            
+            function getKomarnikName(type) {
+                if (type === 'harmo') return 'Harmo komarnik';
+                if (type === 'fiksni') return 'Fiksni komarnik';
+                if (type === 'utapajuci') return 'Utapajući komarnik';
+                if (type === 'roletni') return 'Roletni komarnik';
+                return 'Komarnik';
+            }
+            
+            // Ažuriraj prikaz ponude
+            function updateQuote() {
+                if (quoteItems.length === 0) {
+                    quoteItemsContainer.innerHTML = '<p style="text-align: center; color: #191919;">Nema stavki u ponudi</p>';
+                    quoteTotal.textContent = 'Ukupno: 0.00 KM';
+                    return;
+                }
+                
+                let html = '';
+                let total = 0;
+                
+                quoteItems.forEach((item, index) => {
+                    total += parseFloat(item.price);
+                    
+                    html += `
+                        <div class="quote-item">
+                            <div class="quote-item-details">
+                                <div class="quote-item-type">${item.name}</div>
+                                <div class="quote-item-desc">
+                                    ${item.width}cm x ${item.height}cm, ${item.color}
+                                    ${item.montaza ? ', Montaža' : ''}
+                                    ${item.vrata ? ', Za vrata' : ''}
+                                </div>
+                            </div>
+                            <div class="quote-item-price">${item.price} KM</div>
+                        </div>
+                    `;
+                });
+                
+                quoteItemsContainer.innerHTML = html;
+                quoteTotal.textContent = `Ukupno: ${total.toFixed(2)} KM`;
+            }
+            
+            // Generiši ponudu
+            function generateQuote(clientName) {
+                let total = 0;
+                let html = `
+                    <!DOCTYPE html>
+                    <html>
+                    <head>
+                        <title>ROLKOM Ponuda za ${clientName}</title>
+                        <style>
+                            body { font-family: Arial, sans-serif; margin: 25px; color: #333; }
+                            .header { margin-bottom: 30px; padding-bottom: 20px; border-bottom: 2px solid #5b5b5b; }
+                            h1 { color: #5b5b5b; text-align: center; margin-bottom: 10px; }
+                            .client-info { margin-bottom: 20px; }
+                            table { width: 100%; border-collapse: collapse; margin: 25px 0; }
+                            th, td { padding: 12px; text-align: left; border-bottom: 1px solid #ddd; }
+                            th { background-color: #5b5b5b; color: white; }
+                            .total-row { font-weight: bold; font-size: 1.1em; }
+                            .footer { margin-top: 40px; padding-top: 20px; border-top: 2px solid #5b5b5b; text-align: center; font-size: 0.9em; color: #777; }
+                            .company-info { margin-top: 10px; }
+                            .note { margin-top: 20px; font-style: italic; color: #555; }
+                        </style>
+                    </head>
+                    <body>
+                        <div class="header">
+                            <h1>Ponuda ROLKOM</h1>
+                            <div class="client-info">
+                                <p><strong>Klijent:</strong> ${clientName}</p>
+                                <p><strong>Datum izdavanja:</strong> ${new Date().toLocaleDateString()}</p>
+                                <p><strong>Broj ponude:</strong> P-${Math.floor(Math.random() * 1000)}</p>
+                            </div>
+                        </div>
+                        
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>RB</th>
+                                    <th>Proizvod</th>
+                                    <th>Opis</th>
+                                    <th>Dimenzije</th>
+                                    <th>Cijena (KM)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                `;
+                
+                quoteItems.forEach((item, index) => {
+                    total += parseFloat(item.price);
+                    
+                    let desc = `${item.color}`;
+                    if (item.montaza) desc += ', Montaža';
+                    if (item.vrata) desc += ', Za vrata';
+                    
+                    html += `
+                        <tr>
+                            <td>${index + 1}</td>
+                            <td>${item.name}</td>
+                            <td>${desc}</td>
+                            <td>${item.width}cm × ${item.height}cm</td>
+                            <td>${item.price}</td>
+                        </tr>
+                    `;
+                });
+                
+                html += `
+                            </tbody>
+                            <tfoot>
+                                <tr class="total-row">
+                                    <td colspan="4" style="text-align: right;">Ukupno:</td>
+                                    <td>${total.toFixed(2)} KM</td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                        
+                        <div class="note">
+                            <p>Napomena: Ova ponuda vrijedi 30 dana od datuma izdavanja. Cijene su izražene u konvertibilnim markama (KM) i uključuju PDV.</p>
+                        </div>
+                        
+                        <div class="footer">
+                            <div class="company-info">
+                                <p><strong>ROLKOM d.o.o.</strong></p>
+                                <p>Krndija bb, Tešanj 74260</p>
+                                <p>Tel: +387 61 988 699 | Email: info@rolkom.ba</p>
+                            </div>
+                            <p>Hvala Vam što ste odabrali naše usluge!</p>
+                        </div>
+                    </body>
+                    </html>
+                `;
+                
+                const printWindow = window.open('', '_blank');
+                printWindow.document.open();
+                printWindow.document.write(html);
+                printWindow.document.close();
+                
+                printWindow.onload = function() {
+                    printWindow.print();
+                };
+            }
+        });
+    </script>
+</body>
+</html>
