@@ -232,6 +232,33 @@
             margin-bottom: 20px;
         }
         
+        .price {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #c6c3ba;
+            margin: 15px 0;
+        }
+        
+        .spec-list {
+            list-style: none;
+            margin-top: 15px;
+            text-align: left;
+        }
+        
+        .spec-list li {
+            margin-bottom: 8px;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .spec-list li:before {
+            content: "•";
+            color: #7e7d7a;
+            font-size: 1.2rem;
+            position: absolute;
+            left: 10px;
+        }
+        
         /* Kontakt sekcija */
         .contact {
             background-color: #5b5b5b;
@@ -642,6 +669,11 @@
                 margin: 20px auto;
                 padding: 20px;
             }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 15px;
+            }
         }
     </style>
 </head>
@@ -700,20 +732,16 @@
             <div class="services-grid">
                 <div class="service-card">
                     <div class="service-icon">
-                        <i class="fas fa-window-maximize"></i>
-                    </div>
-                    <h3>Harmo komarnici</h3>
-                    <p>Harmonika komarnici za prozore i vrata. Dostupni u bijeloj, smeđoj i sivoj boji.</p>
-                    <div class="price">Od 199 KM</div>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">
                         <i class="fas fa-border-all"></i>
                     </div>
                     <h3>Fiksni komarnici</h3>
                     <p>Čvrsti okviri s mrežom za trajnu montažu. Idealno za redovite otvore.</p>
-                    <div class="price">Od 249 KM</div>
+                    <div class="price">25 KM/m²</div>
+                    <ul class="spec-list">
+                        <li>Minimalna obračunska jedinica 1m²</li>
+                        <li>Standardne boje: bijela, siva, smeđa</li>
+                        <li>Druge boje na upit</li>
+                    </ul>
                 </div>
                 
                 <div class="service-card">
@@ -721,8 +749,27 @@
                         <i class="fas fa-th-large"></i>
                     </div>
                     <h3>Utapajući komarnici</h3>
-                    <p>Moderna rješenja koja se utapaju u okvir prozora. Dostupni u svim RAL bojama.</p>
-                    <div class="price">Od 399 KM</div>
+                    <p>Moderna rješenja koja se utapaju u okvir prozora.</p>
+                    <div class="price">25 KM/m²</div>
+                    <ul class="spec-list">
+                        <li>Minimalna obračunska jedinica 1m²</li>
+                        <li>Standardne boje: bijela, siva, smeđa</li>
+                        <li>Druge boje na upit</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-window-maximize"></i>
+                    </div>
+                    <h3>Harmo - plise komarnici</h3>
+                    <p>Harmonika komarnici za prozore i vrata.</p>
+                    <div class="price">50 KM/m²</div>
+                    <ul class="spec-list">
+                        <li>Minimalna obračunska jedinica 1m²</li>
+                        <li>Standardne boje: bijela, siva, smeđa</li>
+                        <li>Druge boje na upit</li>
+                    </ul>
                 </div>
                 
                 <div class="service-card">
@@ -730,8 +777,14 @@
                         <i class="fas fa-blinds"></i>
                     </div>
                     <h3>Aluminijske roletne</h3>
-                    <p>Klasične ručne i moderne električne roletne. Dostupne u više boja i debljina.</p>
-                    <div class="price">Od 899 KM</div>
+                    <p>Klasične ručne i moderne električne roletne.</p>
+                    <div class="price">90 KM/m²</div>
+                    <ul class="spec-list">
+                        <li>Minimalna obračunska jedinica 1m²</li>
+                        <li>Tipovi: 45°, Podfasadna kutija, Nadfasadna kutija, Obla kutija</li>
+                        <li>Visina kutije: 137mm ili 165mm</li>
+                        <li>Pogon: gurtna, špaga, motor</li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -850,21 +903,51 @@
             <!-- Roletne pane -->
             <div class="calculator-pane" id="roletnePane">
                 <div class="calculator-form">
+                    <div class="form-group-calc">
+                        <label for="roletnaType">Tip roletne</label>
+                        <select id="roletnaType">
+                            <option value="45">45°</option>
+                            <option value="podfasadna">Podfasadna kutija</option>
+                            <option value="nadfasadna">Nadfasadna kutija</option>
+                            <option value="obla">Obla kutija</option>
+                        </select>
+                    </div>
+                    
                     <div class="form-row">
                         <div class="form-group-calc">
-                            <label for="roletnaType">Vrsta roletne</label>
-                            <select id="roletnaType">
-                                <option value="rucna">Ručna roletna</option>
-                                <option value="elektricna">Električna roletna</option>
-                                <option value="smart">Pametna roletna</option>
+                            <label for="kutijaVisina">Visina kutije</label>
+                            <select id="kutijaVisina">
+                                <option value="137">137mm</option>
+                                <option value="165">165mm</option>
                             </select>
                         </div>
+                        
                         <div class="form-group-calc">
-                            <label for="roletnaMaterial">Materijal</label>
-                            <select id="roletnaMaterial">
-                                <option value="aluminij">Aluminij</option>
-                                <option value="plastika">Plastika</option>
-                                <option value="kombinovana">Kombinovana</option>
+                            <label for="pogon">Pogon</label>
+                            <select id="pogon">
+                                <option value="gurtna">Gurtna</option>
+                                <option value="spaga">Špaga</option>
+                                <option value="motor">Motor</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group-calc">
+                            <label for="stranaPogona">Strana pogona</label>
+                            <select id="stranaPogona">
+                                <option value="lijeva">Lijeva (pogled iznutra)</option>
+                                <option value="desna">Desna (pogled iznutra)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group-calc">
+                            <label for="bojaRoletne">Boja</label>
+                            <select id="bojaRoletne">
+                                <option value="bijela">Bijela</option>
+                                <option value="siva">Siva</option>
+                                <option value="smedja">Smeđa</option>
+                                <option value="druga">Druga boja (na upit)</option>
                             </select>
                         </div>
                     </div>
@@ -872,28 +955,12 @@
                     <div class="form-row">
                         <div class="form-group-calc">
                             <label for="width">Širina (cm)</label>
-                            <input type="number" id="width" min="50" max="300" placeholder="Unesite širinu">
+                            <input type="number" id="width" min="50" max="300" placeholder="Unesite širinu" required>
                         </div>
                         <div class="form-group-calc">
                             <label for="height">Visina (cm)</label>
-                            <input type="number" id="height" min="50" max="300" placeholder="Unesite visinu">
+                            <input type="number" id="height" min="50" max="300" placeholder="Unesite visinu" required>
                         </div>
-                    </div>
-                    
-                    <div class="form-group-calc">
-                        <label for="color">Boja</label>
-                        <select id="color">
-                            <option value="bijela">Bijela</option>
-                            <option value="smedja">Smeđa</option>
-                            <option value="siva">Siva</option>
-                            <option value="ral">RAL boja</option>
-                        </select>
-                    </div>
-                    
-                    <div class="checkbox-group">
-                        <label>
-                            <input type="checkbox" id="montazaRoletna"> Montaža (+50 KM)
-                        </label>
                     </div>
                     
                     <button class="btn" id="addRoletna">Dodaj roletnu u ponudu</button>
@@ -906,21 +973,20 @@
                     <div class="form-group-calc">
                         <label for="komarnikType">Vrsta komarnika</label>
                         <select id="komarnikType">
-                            <option value="harmo">Harmo komarnik</option>
                             <option value="fiksni">Fiksni komarnik</option>
                             <option value="utapajuci">Utapajući komarnik</option>
-                            <option value="roletni">Roletni komarnik</option>
+                            <option value="harmo">Harmo - plise komarnik</option>
                         </select>
                     </div>
                     
                     <div class="form-row">
                         <div class="form-group-calc">
                             <label for="komarnikWidth">Širina (cm)</label>
-                            <input type="number" id="komarnikWidth" min="30" max="200" placeholder="Unesite širinu">
+                            <input type="number" id="komarnikWidth" min="30" max="200" placeholder="Unesite širinu" required>
                         </div>
                         <div class="form-group-calc">
                             <label for="komarnikHeight">Visina (cm)</label>
-                            <input type="number" id="komarnikHeight" min="30" max="200" placeholder="Unesite visinu">
+                            <input type="number" id="komarnikHeight" min="30" max="200" placeholder="Unesite visinu" required>
                         </div>
                     </div>
                     
@@ -928,22 +994,10 @@
                         <label for="komarnikColor">Boja</label>
                         <select id="komarnikColor">
                             <option value="bijela">Bijela</option>
-                            <option value="smedja">Smeđa</option>
                             <option value="siva">Siva</option>
-                            <option value="ral">RAL boja</option>
+                            <option value="smedja">Smeđa</option>
+                            <option value="druga">Druga boja (na upit)</option>
                         </select>
-                    </div>
-                    
-                    <div class="checkbox-group">
-                        <label>
-                            <input type="checkbox" id="vrata"> Za vrata
-                        </label>
-                    </div>
-                    
-                    <div class="checkbox-group">
-                        <label>
-                            <input type="checkbox" id="montazaKomarnik"> Montaža (+30 KM)
-                        </label>
                     </div>
                     
                     <button class="btn" id="addKomarnik">Dodaj komarnik u ponudu</button>
@@ -1013,29 +1067,47 @@
             const quoteItemsContainer = document.getElementById('quoteItems');
             const quoteTotal = document.getElementById('quoteTotal');
             
+            // Cijene po m²
+            const prices = {
+                fiksni: 25,
+                utapajuci: 25,
+                harmo: 50,
+                roletna: 90
+            };
+            
             // Dodaj roletnu
             document.getElementById('addRoletna').addEventListener('click', function() {
                 const type = document.getElementById('roletnaType').value;
-                const material = document.getElementById('roletnaMaterial').value;
-                const width = document.getElementById('width').value;
-                const height = document.getElementById('height').value;
-                const color = document.getElementById('color').value;
-                const montaza = document.getElementById('montazaRoletna').checked;
+                const kutijaVisina = document.getElementById('kutijaVisina').value;
+                const pogon = document.getElementById('pogon').value;
+                const stranaPogona = document.getElementById('stranaPogona').value;
+                const boja = document.getElementById('bojaRoletne').value;
+                const width = parseFloat(document.getElementById('width').value);
+                const height = parseFloat(document.getElementById('height').value);
                 
                 if (!width || !height) {
                     alert('Molimo unesite širinu i visinu!');
                     return;
                 }
                 
-                const price = calculateRoletnaPrice(type, material, width, height, montaza);
+                // Izračun površine (u m²)
+                const area = (width * height) / 10000;
+                // Minimalna površina 1m²
+                const effectiveArea = Math.max(area, 1);
+                
+                // Izračun cijene
+                const price = (effectiveArea * prices.roletna).toFixed(2);
+                
                 const item = {
                     type: 'Roletna',
                     name: getRoletnaName(type),
-                    material: material,
+                    kutija: `${kutijaVisina}mm`,
+                    pogon: pogon,
+                    strana: stranaPogona,
+                    boja: boja,
                     width: width,
                     height: height,
-                    color: color,
-                    montaza: montaza,
+                    area: effectiveArea.toFixed(2),
                     price: price
                 };
                 
@@ -1046,26 +1118,30 @@
             // Dodaj komarnik
             document.getElementById('addKomarnik').addEventListener('click', function() {
                 const type = document.getElementById('komarnikType').value;
-                const width = document.getElementById('komarnikWidth').value;
-                const height = document.getElementById('komarnikHeight').value;
-                const color = document.getElementById('komarnikColor').value;
-                const vrata = document.getElementById('vrata').checked;
-                const montaza = document.getElementById('montazaKomarnik').checked;
+                const width = parseFloat(document.getElementById('komarnikWidth').value);
+                const height = parseFloat(document.getElementById('komarnikHeight').value);
+                const boja = document.getElementById('komarnikColor').value;
                 
                 if (!width || !height) {
                     alert('Molimo unesite širinu i visinu!');
                     return;
                 }
                 
-                const price = calculateKomarnikPrice(type, width, height, vrata, montaza);
+                // Izračun površine (u m²)
+                const area = (width * height) / 10000;
+                // Minimalna površina 1m²
+                const effectiveArea = Math.max(area, 1);
+                
+                // Izračun cijene
+                const price = (effectiveArea * prices[type]).toFixed(2);
+                
                 const item = {
                     type: 'Komarnik',
                     name: getKomarnikName(type),
                     width: width,
                     height: height,
-                    color: color,
-                    vrata: vrata,
-                    montaza: montaza,
+                    boja: boja,
+                    area: effectiveArea.toFixed(2),
                     price: price
                 };
                 
@@ -1096,59 +1172,24 @@
                 generateQuote(clientName);
             });
             
-            // Funkcije za izračun cijene
-            function calculateRoletnaPrice(type, material, width, height, montaza) {
-                let basePrice = 0;
-                const area = (width * height) / 10000;
-                
-                // Cijena po tipu
-                if (type === 'rucna') basePrice = area * 120;
-                else if (type === 'elektricna') basePrice = area * 180;
-                else if (type === 'smart') basePrice = area * 220;
-                
-                // Dodatak za materijal
-                if (material === 'aluminij') basePrice += area * 30;
-                else if (material === 'kombinovana') basePrice += area * 15;
-                
-                // Dodatak za montažu
-                if (montaza) basePrice += 50;
-                
-                return basePrice.toFixed(2);
-            }
-            
-            function calculateKomarnikPrice(type, width, height, vrata, montaza) {
-                let basePrice = 0;
-                const area = (width * height) / 10000;
-                
-                // Cijena po tipu
-                if (type === 'harmo') basePrice = area * 80;
-                else if (type === 'fiksni') basePrice = area * 100;
-                else if (type === 'utapajuci') basePrice = area * 150;
-                else if (type === 'roletni') basePrice = area * 200;
-                
-                // Dodatak za vrata
-                if (vrata) basePrice += 100;
-                
-                // Dodatak za montažu
-                if (montaza) basePrice += 30;
-                
-                return basePrice.toFixed(2);
-            }
-            
             // Funkcije za nazive
             function getRoletnaName(type) {
-                if (type === 'rucna') return 'Ručna roletna';
-                if (type === 'elektricna') return 'Električna roletna';
-                if (type === 'smart') return 'Pametna roletna';
-                return 'Roletna';
+                const names = {
+                    '45': 'Roletna 45°',
+                    'podfasadna': 'Podfasadna kutija',
+                    'nadfasadna': 'Nadfasadna kutija',
+                    'obla': 'Obla kutija'
+                };
+                return names[type] || 'Roletna';
             }
             
             function getKomarnikName(type) {
-                if (type === 'harmo') return 'Harmo komarnik';
-                if (type === 'fiksni') return 'Fiksni komarnik';
-                if (type === 'utapajuci') return 'Utapajući komarnik';
-                if (type === 'roletni') return 'Roletni komarnik';
-                return 'Komarnik';
+                const names = {
+                    'fiksni': 'Fiksni komarnik',
+                    'utapajuci': 'Utapajući komarnik',
+                    'harmo': 'Harmo - plise komarnik'
+                };
+                return names[type] || 'Komarnik';
             }
             
             // Ažuriraj prikaz ponude
@@ -1170,9 +1211,9 @@
                             <div class="quote-item-details">
                                 <div class="quote-item-type">${item.name}</div>
                                 <div class="quote-item-desc">
-                                    ${item.width}cm x ${item.height}cm, ${item.color}
-                                    ${item.montaza ? ', Montaža' : ''}
-                                    ${item.vrata ? ', Za vrata' : ''}
+                                    ${item.width}cm x ${item.height}cm (${item.area}m²)
+                                    ${item.type === 'Roletna' ? `<br>${item.kutija}, ${item.pogon}, ${item.strana}, ${item.boja}` : ''}
+                                    ${item.type === 'Komarnik' ? `<br>${item.boja}` : ''}
                                 </div>
                             </div>
                             <div class="quote-item-price">${item.price} KM</div>
@@ -1223,6 +1264,7 @@
                                     <th>Proizvod</th>
                                     <th>Opis</th>
                                     <th>Dimenzije</th>
+                                    <th>Površina</th>
                                     <th>Cijena (KM)</th>
                                 </tr>
                             </thead>
@@ -1232,9 +1274,12 @@
                 quoteItems.forEach((item, index) => {
                     total += parseFloat(item.price);
                     
-                    let desc = `${item.color}`;
-                    if (item.montaza) desc += ', Montaža';
-                    if (item.vrata) desc += ', Za vrata';
+                    let desc = '';
+                    if (item.type === 'Roletna') {
+                        desc = `${item.kutija}, ${item.pogon}, ${item.strana}, ${item.boja}`;
+                    } else {
+                        desc = `${item.boja}`;
+                    }
                     
                     html += `
                         <tr>
@@ -1242,6 +1287,7 @@
                             <td>${item.name}</td>
                             <td>${desc}</td>
                             <td>${item.width}cm × ${item.height}cm</td>
+                            <td>${item.area}m²</td>
                             <td>${item.price}</td>
                         </tr>
                     `;
@@ -1251,14 +1297,19 @@
                             </tbody>
                             <tfoot>
                                 <tr class="total-row">
-                                    <td colspan="4" style="text-align: right;">Ukupno:</td>
+                                    <td colspan="5" style="text-align: right;">Ukupno:</td>
                                     <td>${total.toFixed(2)} KM</td>
                                 </tr>
                             </tfoot>
                         </table>
                         
                         <div class="note">
-                            <p>Napomena: Ova ponuda vrijedi 30 dana od datuma izdavanja. Cijene su izražene u konvertibilnim markama (KM) i uključuju PDV.</p>
+                            <p><strong>Napomene:</strong></p>
+                            <p>1. Minimalna obračunska jedinica je 1m²</p>
+                            <p>2. Standardne boje: bijela, siva, smeđa (bez doplate)</p>
+                            <p>3. Druge boje na upit</p>
+                            <p>4. Ova ponuda vrijedi 30 dana od datuma izdavanja</p>
+                            <p>5. Cijene su izražene u konvertibilnim markama (KM) i uključuju PDV</p>
                         </div>
                         
                         <div class="footer">
