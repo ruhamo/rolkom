@@ -14,101 +14,177 @@
         }
         
         body {
-            background-color: #191919;
-            color: #c6c3ba;
+            background: linear-gradient(135deg, #1a2a3a, #0d1b2a);
+            color: #e0e1dd;
             line-height: 1.6;
+            min-height: 100vh;
             padding: 20px;
         }
         
         .container {
             max-width: 1200px;
-            margin: 0 auto;
-            background: #2a2a2a;
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            margin: 40px auto;
+            background: rgba(26, 36, 47, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
             overflow: hidden;
+            border: 1px solid #415a77;
         }
         
         .header {
-            background: #5b5b5b;
-            padding: 20px;
+            background: linear-gradient(to right, #1b3a5e, #0d1b2a);
+            padding: 30px;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(65, 90, 119, 0.2) 0%, transparent 70%);
+            z-index: 0;
         }
         
         .logo {
-            font-size: 28px;
+            font-size: 36px;
             font-weight: bold;
-            color: #c6c3ba;
-            margin-bottom: 10px;
+            color: #e0e1dd;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            color: #ff9e00;
         }
         
         .header h1 {
-            font-size: 2.2rem;
-            margin-bottom: 10px;
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+            color: #ffffff;
         }
         
         .header p {
-            color: #a2a09a;
-            max-width: 600px;
+            color: #a3b3cc;
+            max-width: 700px;
             margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+        
+        .timeline {
+            display: flex;
+            justify-content: space-between;
+            max-width: 800px;
+            margin: 30px auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .step {
+            text-align: center;
+            flex: 1;
+            padding: 15px;
+            position: relative;
+        }
+        
+        .step-icon {
+            width: 60px;
+            height: 60px;
+            background: #ff9e00;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            font-size: 24px;
+            color: #0d1b2a;
+            box-shadow: 0 4px 10px rgba(255, 158, 0, 0.3);
+        }
+        
+        .step-text {
+            color: #e0e1dd;
+            font-weight: 500;
+            font-size: 0.9rem;
         }
         
         .content {
             display: flex;
             flex-wrap: wrap;
-            padding: 20px;
+            padding: 30px;
         }
         
         .product-selection {
             flex: 1;
             min-width: 300px;
-            padding: 20px;
-            background: #333;
-            border-radius: 8px;
+            padding: 25px;
+            background: rgba(16, 28, 43, 0.7);
+            border-radius: 12px;
             margin-right: 20px;
             margin-bottom: 20px;
+            border: 1px solid #2a4365;
         }
         
         .product-list {
             flex: 1;
             min-width: 300px;
-            padding: 20px;
-            background: #333;
-            border-radius: 8px;
+            padding: 25px;
+            background: rgba(16, 28, 43, 0.7);
+            border-radius: 12px;
             margin-bottom: 20px;
+            border: 1px solid #2a4365;
         }
         
         .section-title {
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #7e7d7a;
-            color: #c6c3ba;
+            font-size: 1.6rem;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #415a77;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+        }
+        
+        .section-title i {
+            margin-right: 10px;
+            color: #ff9e00;
         }
         
         .product-type {
-            margin-bottom: 25px;
+            margin-bottom: 30px;
         }
         
         .product-type label {
             display: block;
             font-weight: 600;
-            margin-bottom: 8px;
-            color: #c6c3ba;
+            margin-bottom: 12px;
+            color: #e0e1dd;
+            font-size: 1.1rem;
         }
         
         .radio-group {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 15px;
         }
         
         .radio-option {
             flex: 1;
-            min-width: 120px;
-            background: #444;
-            padding: 12px;
-            border-radius: 5px;
+            min-width: 140px;
+            background: #1e3658;
+            padding: 15px;
+            border-radius: 8px;
             cursor: pointer;
             transition: all 0.3s;
             border: 2px solid transparent;
@@ -116,34 +192,43 @@
         }
         
         .radio-option:hover {
-            background: #555;
+            background: #2a4b7c;
+            transform: translateY(-3px);
         }
         
         .radio-option.selected {
-            border-color: #7e7d7a;
-            background: #555;
+            border-color: #ff9e00;
+            background: #2a4b7c;
         }
         
         .form-group {
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
         
         .form-group label {
             display: block;
-            margin-bottom: 8px;
-            color: #c6c3ba;
+            margin-bottom: 10px;
+            color: #e0e1dd;
             font-weight: 500;
         }
         
         .form-group input,
         .form-group select {
             width: 100%;
-            padding: 12px 15px;
-            border: 1px solid #5b5b5b;
-            border-radius: 4px;
-            background-color: #444;
-            color: #c6c3ba;
+            padding: 14px;
+            border: 1px solid #415a77;
+            border-radius: 6px;
+            background-color: #1e3658;
+            color: #e0e1dd;
             font-size: 16px;
+            transition: all 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #ff9e00;
+            box-shadow: 0 0 0 3px rgba(255, 158, 0, 0.2);
         }
         
         .dimensions {
@@ -157,50 +242,50 @@
         
         .btn {
             display: inline-block;
-            background-color: #7e7d7a;
-            color: #191919;
-            padding: 12px 30px;
-            border-radius: 4px;
+            background: linear-gradient(to right, #ff9e00, #ff6b00);
+            color: #0d1b2a;
+            padding: 14px 30px;
+            border-radius: 6px;
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s;
             border: none;
             cursor: pointer;
             font-size: 16px;
-            margin-top: 10px;
+            margin-top: 15px;
             width: 100%;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(255, 158, 0, 0.3);
         }
         
         .btn:hover {
-            background-color: #a2a09a;
             transform: translateY(-3px);
-        }
-        
-        .btn-primary {
-            background-color: #0066cc;
-            color: white;
-        }
-        
-        .btn-primary:hover {
-            background-color: #0088ff;
+            box-shadow: 0 6px 20px rgba(255, 158, 0, 0.4);
         }
         
         .items-container {
             min-height: 300px;
-            border: 1px dashed #5b5b5b;
-            border-radius: 5px;
-            padding: 15px;
-            margin-bottom: 20px;
+            border: 2px dashed #415a77;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
         }
         
         .item {
-            background: #444;
-            padding: 12px;
-            border-radius: 5px;
-            margin-bottom: 10px;
+            background: #1e3658;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            border-left: 4px solid #ff9e00;
+            transition: all 0.3s;
+        }
+        
+        .item:hover {
+            transform: translateX(5px);
+            background: #2a4b7c;
         }
         
         .item-details {
@@ -208,84 +293,122 @@
         }
         
         .item-type {
-            font-weight: 600;
-            color: #c6c3ba;
-            margin-bottom: 5px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
         }
         
         .item-specs {
-            font-size: 0.9rem;
-            color: #a2a09a;
+            font-size: 0.95rem;
+            color: #a3b3cc;
+            line-height: 1.5;
         }
         
         .item-actions {
             display: flex;
-            gap: 5px;
+            gap: 8px;
         }
         
         .item-btn {
-            background: #5b5b5b;
-            color: #c6c3ba;
+            background: #415a77;
+            color: #e0e1dd;
             border: none;
-            width: 30px;
-            height: 30px;
+            width: 36px;
+            height: 36px;
             border-radius: 50%;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
+            transition: all 0.3s;
         }
         
         .item-btn:hover {
-            background: #7e7d7a;
+            background: #ff9e00;
+            color: #0d1b2a;
         }
         
         .empty-items {
             text-align: center;
-            color: #a2a09a;
-            padding: 30px;
+            color: #a3b3cc;
+            padding: 40px 20px;
             font-style: italic;
+            font-size: 1.1rem;
+        }
+        
+        .empty-items i {
+            font-size: 3rem;
+            display: block;
+            margin-bottom: 20px;
+            color: #415a77;
         }
         
         .summary {
-            background: #333;
-            padding: 20px;
-            border-radius: 8px;
+            background: #1e3658;
+            padding: 25px;
+            border-radius: 10px;
             margin-top: 20px;
+            border: 1px solid #415a77;
         }
         
         .summary-item {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
+            font-size: 1.1rem;
         }
         
         .total {
-            font-weight: 600;
-            font-size: 1.2rem;
-            padding-top: 10px;
-            border-top: 1px solid #5b5b5b;
-            margin-top: 10px;
+            font-weight: 700;
+            font-size: 1.3rem;
+            padding-top: 15px;
+            border-top: 2px solid #415a77;
+            margin-top: 15px;
+            color: #ff9e00;
         }
         
         .notification {
-            background: #5b5b5b;
-            padding: 15px;
-            border-radius: 5px;
+            background: rgba(65, 90, 119, 0.3);
+            padding: 20px;
+            border-radius: 8px;
             text-align: center;
-            margin-top: 20px;
-            color: #c6c3ba;
+            margin-top: 25px;
+            color: #e0e1dd;
+            border: 1px solid #415a77;
+        }
+        
+        .notification i {
+            color: #ff9e00;
+            margin-right: 8px;
         }
         
         .contact-form {
-            background: #333;
-            padding: 20px;
-            border-radius: 8px;
+            background: rgba(16, 28, 43, 0.7);
+            padding: 25px;
+            border-radius: 10px;
             margin-top: 20px;
+            border: 1px solid #2a4365;
         }
         
         .contact-form .form-group {
-            margin-bottom: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .quote-note {
+            color: #ff9e00;
+            font-weight: 500;
+            text-align: center;
+            margin-top: 20px;
+            font-size: 1.1rem;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 25px;
+            color: #a3b3cc;
+            border-top: 1px solid #2a4365;
+            font-size: 0.9rem;
         }
         
         @media (max-width: 768px) {
@@ -301,33 +424,71 @@
                 flex-direction: column;
                 gap: 0;
             }
+            
+            .header {
+                padding: 20px 15px;
+            }
+            
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .timeline {
+                flex-direction: column;
+                gap: 25px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <div class="logo">ROLKOM</div>
+            <div class="logo"><i class="fas fa-blinds"></i>ROLKOM</div>
             <h1>Zahtjev za ponudu</h1>
-            <p>Odaberite proizvode koje želite, dodajte ih u listu, te pošaljite zahtjev za ponudu</p>
+            <p>Odaberite proizvode koje želite, dodajte ih u listu, te pošaljite zahtjev za ponudu. Naš tim će vam dostaviti personaliziranu ponudu u roku od 24 sata.</p>
+            
+            <div class="timeline">
+                <div class="step">
+                    <div class="step-icon"><i class="fas fa-1"></i></div>
+                    <div class="step-text">Odaberite proizvode</div>
+                </div>
+                <div class="step">
+                    <div class="step-icon"><i class="fas fa-2"></i></div>
+                    <div class="step-text">Dodajte u listu</div>
+                </div>
+                <div class="step">
+                    <div class="step-icon"><i class="fas fa-3"></i></div>
+                    <div class="step-text">Pošaljite zahtjev</div>
+                </div>
+                <div class="step">
+                    <div class="step-icon"><i class="fas fa-4"></i></div>
+                    <div class="step-text">Primite ponudu</div>
+                </div>
+            </div>
         </div>
         
         <div class="content">
             <div class="product-selection">
-                <h2 class="section-title">Odaberite proizvod</h2>
+                <h2 class="section-title"><i class="fas fa-box-open"></i>Odaberite proizvod</h2>
                 
                 <div class="product-type">
                     <label>Vrsta proizvoda:</label>
                     <div class="radio-group">
-                        <div class="radio-option" data-value="roletna">Roletna</div>
-                        <div class="radio-option" data-value="komarnik">Komarnik</div>
+                        <div class="radio-option selected" data-value="roletna">
+                            <i class="fas fa-blinds fa-2x"></i>
+                            <div>Roletne</div>
+                        </div>
+                        <div class="radio-option" data-value="komarnik">
+                            <i class="fas fa-border-all fa-2x"></i>
+                            <div>Komarnici</div>
+                        </div>
                     </div>
                 </div>
                 
                 <!-- Roletna forma -->
                 <div id="roletna-form" class="product-form">
                     <div class="form-group">
-                        <label for="boja-roletne">Boja roletne:</label>
+                        <label for="boja-roletne"><i class="fas fa-palette"></i> Boja roletne:</label>
                         <select id="boja-roletne">
                             <option value="bijela">Bijela</option>
                             <option value="siva">Siva</option>
@@ -338,22 +499,22 @@
                     
                     <div class="dimensions">
                         <div class="form-group">
-                            <label for="sirina-roletne">Širina (cm):</label>
+                            <label for="sirina-roletne"><i class="fas fa-arrows-alt-h"></i> Širina (cm):</label>
                             <input type="number" id="sirina-roletne" min="50" max="300" placeholder="Unesite širinu">
                         </div>
                         <div class="form-group">
-                            <label for="visina-roletne">Visina (cm):</label>
+                            <label for="visina-roletne"><i class="fas fa-arrows-alt-v"></i> Visina (cm):</label>
                             <input type="number" id="visina-roletne" min="50" max="300" placeholder="Unesite visinu">
                         </div>
                     </div>
                     
                     <div class="form-group">
-                        <label for="kolicina-roletne">Količina:</label>
+                        <label for="kolicina-roletne"><i class="fas fa-cube"></i> Količina:</label>
                         <input type="number" id="kolicina-roletne" min="1" value="1">
                     </div>
                     
                     <div class="form-group">
-                        <label for="pogon-roletne">Pogon:</label>
+                        <label for="pogon-roletne"><i class="fas fa-cogs"></i> Pogon:</label>
                         <select id="pogon-roletne">
                             <option value="gurtna">Gurtna</option>
                             <option value="spaga">Špaga</option>
@@ -362,20 +523,20 @@
                     </div>
                     
                     <div class="form-group">
-                        <label for="strana-pogona">Strana pogona:</label>
+                        <label for="strana-pogona"><i class="fas fa-exchange-alt"></i> Strana pogona:</label>
                         <select id="strana-pogona">
                             <option value="desno">Desno (pogled iznutra)</option>
                             <option value="lijevo">Lijevo (pogled iznutra)</option>
                         </select>
                     </div>
                     
-                    <button class="btn btn-primary" id="dodaj-roletnu">Dodaj roletnu</button>
+                    <button class="btn" id="dodaj-roletnu"><i class="fas fa-plus-circle"></i> Dodaj roletnu</button>
                 </div>
                 
                 <!-- Komarnik forma -->
                 <div id="komarnik-form" class="product-form" style="display: none;">
                     <div class="form-group">
-                        <label for="tip-komarnika">Tip komarnika:</label>
+                        <label for="tip-komarnika"><i class="fas fa-th-large"></i> Tip komarnika:</label>
                         <select id="tip-komarnika">
                             <option value="harmo">Harmo - plise komarnik</option>
                             <option value="utapajuci">Fiksni utapajući komarnik (montaža iznutra)</option>
@@ -384,7 +545,7 @@
                     </div>
                     
                     <div class="form-group">
-                        <label for="boja-komarnika">Boja komarnika:</label>
+                        <label for="boja-komarnika"><i class="fas fa-palette"></i> Boja komarnika:</label>
                         <select id="boja-komarnika">
                             <option value="bijela">Bijela</option>
                             <option value="siva">Siva</option>
@@ -395,29 +556,32 @@
                     
                     <div class="dimensions">
                         <div class="form-group">
-                            <label for="sirina-komarnika">Širina (cm):</label>
+                            <label for="sirina-komarnika"><i class="fas fa-arrows-alt-h"></i> Širina (cm):</label>
                             <input type="number" id="sirina-komarnika" min="30" max="200" placeholder="Unesite širinu">
                         </div>
                         <div class="form-group">
-                            <label for="visina-komarnika">Visina (cm):</label>
+                            <label for="visina-komarnika"><i class="fas fa-arrows-alt-v"></i> Visina (cm):</label>
                             <input type="number" id="visina-komarnika" min="30" max="200" placeholder="Unesite visinu">
                         </div>
                     </div>
                     
                     <div class="form-group">
-                        <label for="kolicina-komarnika">Količina:</label>
+                        <label for="kolicina-komarnika"><i class="fas fa-cube"></i> Količina:</label>
                         <input type="number" id="kolicina-komarnika" min="1" value="1">
                     </div>
                     
-                    <button class="btn btn-primary" id="dodaj-komarnik">Dodaj komarnik</button>
+                    <button class="btn" id="dodaj-komarnik"><i class="fas fa-plus-circle"></i> Dodaj komarnik</button>
                 </div>
             </div>
             
             <div class="product-list">
-                <h2 class="section-title">Vaša lista proizvoda</h2>
+                <h2 class="section-title"><i class="fas fa-clipboard-list"></i>Vaša lista proizvoda</h2>
                 
                 <div class="items-container" id="items-container">
-                    <div class="empty-items">Trenutno nemate proizvoda u listi. Dodajte proizvode koristeći obrazac lijevo.</div>
+                    <div class="empty-items">
+                        <i class="fas fa-box-open"></i>
+                        Trenutno nemate proizvoda u listi.<br>Dodajte proizvode koristeći obrazac lijevo.
+                    </div>
                 </div>
                 
                 <div class="summary">
@@ -436,42 +600,49 @@
                 </div>
                 
                 <div class="notification">
-                    <p>Nakon što dodate sve proizvode koje želite, unesite svoje kontakt podatke i pošaljite zahtjev za ponudu.</p>
+                    <p><i class="fas fa-info-circle"></i> Nakon što dodate sve proizvode koje želite, unesite svoje kontakt podatke i pošaljite zahtjev za ponudu.</p>
                 </div>
                 
                 <div class="contact-form">
-                    <h2 class="section-title">Kontakt podaci</h2>
+                    <h2 class="section-title"><i class="fas fa-user"></i>Kontakt podaci</h2>
                     
                     <form id="quote-form" action="https://formsubmit.co/harunhotic@outlook.com" method="POST">
-                        <input type="hidden" name="_subject" value="Novi zahtjev za ponudu">
+                        <input type="hidden" name="_subject" value="Novi zahtjev za ponudu - ROLKOM">
                         <input type="hidden" name="_template" value="table">
-                        <input type="hidden" name="_next" value="#">
                         <input type="hidden" name="proizvodi" id="proizvodi-input">
                         
                         <div class="form-group">
-                            <label for="ime">Ime i prezime:</label>
+                            <label for="ime"><i class="fas fa-user"></i> Ime i prezime:</label>
                             <input type="text" id="ime" name="ime" required>
                         </div>
                         
                         <div class="form-group">
-                            <label for="email">Email adresa:</label>
+                            <label for="email"><i class="fas fa-envelope"></i> Email adresa:</label>
                             <input type="email" id="email" name="email">
                         </div>
                         
                         <div class="form-group">
-                            <label for="telefon">Broj telefona:</label>
+                            <label for="telefon"><i class="fas fa-phone"></i> Broj telefona:</label>
                             <input type="tel" id="telefon" name="telefon">
                         </div>
                         
                         <div class="form-group">
-                            <label for="poruka">Dodatne napomene (opcionalno):</label>
+                            <label for="poruka"><i class="fas fa-comment"></i> Dodatne napomene (opcionalno):</label>
                             <textarea id="poruka" name="poruka" rows="3"></textarea>
                         </div>
                         
-                        <button type="submit" class="btn btn-primary">Zatraži ponudu</button>
+                        <button type="submit" class="btn"><i class="fas fa-paper-plane"></i> Zatraži ponudu</button>
                     </form>
                 </div>
             </div>
+        </div>
+        
+        <div class="quote-note">
+            <i class="fas fa-lock"></i> Vaše informacije su sigurne. Cijene su dostupne samo našem timu.
+        </div>
+        
+        <div class="footer">
+            <p>ROLKOM d.o.o. &copy; 2023 | Komarnici i roletne po mjeri | Sva prava pridržana</p>
         </div>
     </div>
 
@@ -499,9 +670,6 @@
             });
         });
         
-        // Postavi prvu opciju kao selektiranu
-        radioOptions[0].classList.add('selected');
-        
         // Podaci za ponudu
         let items = [];
         const itemsContainer = document.getElementById('items-container');
@@ -523,6 +691,11 @@
                 return;
             }
             
+            if (sirina < 50 || sirina > 300 || visina < 50 || visina > 300) {
+                alert('Širina i visina roletne moraju biti između 50cm i 300cm!');
+                return;
+            }
+            
             const povrsina = (sirina * visina / 10000 * kolicina).toFixed(2);
             
             const item = {
@@ -538,6 +711,10 @@
             
             items.push(item);
             updateItemsList();
+            
+            // Reset forme
+            document.getElementById('sirina-roletne').value = '';
+            document.getElementById('visina-roletne').value = '';
         });
         
         // Dodaj komarnik
@@ -550,6 +727,11 @@
             
             if (!sirina || !visina) {
                 alert('Molimo unesite širinu i visinu komarnika!');
+                return;
+            }
+            
+            if (sirina < 30 || sirina > 200 || visina < 30 || visina > 200) {
+                alert('Širina i visina komarnika moraju biti između 30cm i 200cm!');
                 return;
             }
             
@@ -567,12 +749,16 @@
             
             items.push(item);
             updateItemsList();
+            
+            // Reset forme
+            document.getElementById('sirina-komarnika').value = '';
+            document.getElementById('visina-komarnika').value = '';
         });
         
         // Ažuriraj listu proizvoda
         function updateItemsList() {
             if (items.length === 0) {
-                itemsContainer.innerHTML = '<div class="empty-items">Trenutno nemate proizvoda u listi. Dodajte proizvode koristeći obrazac lijevo.</div>';
+                itemsContainer.innerHTML = '<div class="empty-items"><i class="fas fa-box-open"></i>Trenutno nemate proizvoda u listi.<br>Dodajte proizvode koristeći obrazac lijevo.</div>';
                 totalItemsEl.textContent = '0';
                 totalAreaEl.textContent = '0 m²';
                 return;
@@ -592,16 +778,17 @@
                             <div class="item-type">${item.type === 'Roletna' ? 'Roletna' : getKomarnikName(item.tip)}</div>
                             <div class="item-specs">
                                 ${item.type === 'Roletna' ? 
-                                    `Boja: ${item.boja}, ${item.sirina}cm × ${item.visina}cm, 
-                                    Pogon: ${item.pogon}, Strana: ${item.strana}` : 
-                                    `Tip: ${getKomarnikName(item.tip)}, Boja: ${item.boja}, 
-                                    ${item.sirina}cm × ${item.visina}cm`}
-                                <br>Količina: ${item.kolicina}, Površina: ${item.povrsina} m²
+                                    `Boja: ${formatBoja(item.boja)}, ${item.sirina}cm × ${item.visina}cm<br>
+                                    Pogon: ${formatPogon(item.pogon)}, Strana: ${item.strana}<br>
+                                    Količina: ${item.kolicina}, Površina: ${item.povrsina} m²` : 
+                                    `Tip: ${getKomarnikName(item.tip)}, Boja: ${formatBoja(item.boja)}<br>
+                                    ${item.sirina}cm × ${item.visina}cm, Količina: ${item.kolicina}<br>
+                                    Površina: ${item.povrsina} m²`}
                             </div>
                         </div>
                         <div class="item-actions">
-                            <button class="item-btn remove-btn" data-index="${index}">
-                                <i class="fas fa-times"></i>
+                            <button class="item-btn remove-btn" data-index="${index}" title="Ukloni">
+                                <i class="fas fa-trash-alt"></i>
                             </button>
                         </div>
                     </div>
@@ -632,6 +819,27 @@
             return names[type] || 'Komarnik';
         }
         
+        // Formatiraj boju za prikaz
+        function formatBoja(boja) {
+            const boje = {
+                'bijela': 'Bijela',
+                'siva': 'Siva',
+                'smedja': 'Smeđa',
+                'ral': 'RAL boja'
+            };
+            return boje[boja] || boja;
+        }
+        
+        // Formatiraj pogon za prikaz
+        function formatPogon(pogon) {
+            const pogoni = {
+                'gurtna': 'Gurtna',
+                'spaga': 'Špaga',
+                'motor': 'Motor'
+            };
+            return pogoni[pogon] || pogon;
+        }
+        
         // Validacija forme
         document.getElementById('quote-form').addEventListener('submit', function(e) {
             const email = document.getElementById('email').value;
@@ -652,17 +860,16 @@
             // Priprema podataka o proizvodima za slanje
             const proizvodiText = items.map(item => {
                 if (item.type === 'Roletna') {
-                    return `Roletna: ${item.boja}, ${item.sirina}cm × ${item.visina}cm, 
-                            Pogon: ${item.pogon}, Strana: ${item.strana}, 
-                            Količina: ${item.kolicina}, Površina: ${item.povrsina} m²`;
+                    return `Roletna:\n- Boja: ${item.boja}\n- Dimenzije: ${item.sirina}cm × ${item.visina}cm\n- Pogon: ${item.pogon}\n- Strana: ${item.strana}\n- Količina: ${item.kolicina}\n- Površina: ${item.povrsina} m²`;
                 } else {
-                    return `Komarnik (${getKomarnikName(item.tip)}): ${item.boja}, 
-                            ${item.sirina}cm × ${item.visina}cm, 
-                            Količina: ${item.kolicina}, Površina: ${item.povrsina} m²`;
+                    return `Komarnik (${item.tip}):\n- Boja: ${item.boja}\n- Dimenzije: ${item.sirina}cm × ${item.visina}cm\n- Količina: ${item.kolicina}\n- Površina: ${item.povrsina} m²`;
                 }
             }).join('\n\n');
             
             document.getElementById('proizvodi-input').value = proizvodiText;
+            
+            // Prikaži poruku o uspješnom slanju
+            alert('Vaš zahtjev za ponudu je uspješno poslan! Kontaktirat ćemo vas u roku od 24 sata s ponudom.');
         });
     </script>
 </body>
