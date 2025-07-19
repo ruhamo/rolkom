@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ROLKOM.ba - Zahtjev za ponudu</title>
+    <title>ROLKOM.ba - Roletne i komarnici po mjeri</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * {
@@ -18,12 +18,289 @@
             color: #e0e1dd;
             line-height: 1.6;
             min-height: 100vh;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        
+        /* Navigacijska traka */
+        .navbar {
+            background: rgba(26, 36, 47, 0.95);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            border-bottom: 1px solid #415a77;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo {
+            height: 50px;
+            margin-right: 15px;
+        }
+        
+        .company-name {
+            font-size: 24px;
+            font-weight: bold;
+            color: #e0e1dd;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .company-name .highlight {
+            color: #ff9e00;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            color: #e0e1dd;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 18px;
+            transition: color 0.3s;
+            padding: 8px 15px;
+            border-radius: 5px;
+        }
+        
+        .nav-links a:hover, .nav-links a.active {
+            color: #ff9e00;
+            background: rgba(65, 90, 119, 0.3);
+        }
+        
+        /* Hero sekcija */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
             padding: 20px;
+            text-align: center;
+            background: linear-gradient(rgba(13, 27, 42, 0.8), rgba(13, 27, 42, 0.9)), url('https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?q=80&w=1470&auto=format&fit=crop') center/cover;
+        }
+        
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255, 158, 0, 0.1) 0%, transparent 70%);
+            z-index: 0;
+        }
+        
+        .hero-content {
+            max-width: 900px;
+            position: relative;
+            z-index: 1;
+            padding: 30px;
+            background: rgba(26, 36, 47, 0.7);
+            border-radius: 15px;
+            border: 1px solid #415a77;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: #ffffff;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+        }
+        
+        .hero p {
+            font-size: 1.4rem;
+            color: #a3b3cc;
+            margin-bottom: 40px;
+            line-height: 1.7;
+        }
+        
+        .cta-btn {
+            display: inline-block;
+            background: linear-gradient(to right, #ff9e00, #ff6b00);
+            color: #0d1b2a;
+            padding: 16px 40px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.3rem;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 6px 20px rgba(255, 158, 0, 0.4);
+            margin: 10px;
+        }
+        
+        .cta-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(255, 158, 0, 0.6);
+        }
+        
+        .secondary-btn {
+            background: transparent;
+            border: 2px solid #ff9e00;
+            color: #ff9e00;
+            box-shadow: none;
+        }
+        
+        .secondary-btn:hover {
+            background: rgba(255, 158, 0, 0.1);
+        }
+        
+        /* Floating Action Button */
+        .fab {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(to right, #ff9e00, #ff6b00);
+            color: #0d1b2a;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+            z-index: 100;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+        
+        .fab:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 10px 25px rgba(255, 158, 0, 0.6);
+        }
+        
+        /* Sekcije s proizvodima */
+        .section {
+            padding: 100px 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 70px;
+            position: relative;
+            color: #ffffff;
+        }
+        
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: #ff9e00;
+            border-radius: 2px;
+        }
+        
+        .products {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+        }
+        
+        .product-card {
+            background: rgba(26, 36, 47, 0.8);
+            border-radius: 15px;
+            overflow: hidden;
+            width: 350px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid #415a77;
+            transition: all 0.3s;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            border-color: #ff9e00;
+        }
+        
+        .product-img {
+            height: 250px;
+            background: #1e3658;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            color: #ff9e00;
+        }
+        
+        .product-content {
+            padding: 25px;
+        }
+        
+        .product-title {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: #ffffff;
+        }
+        
+        .product-features {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+        
+        .product-features li {
+            padding: 8px 0;
+            display: flex;
+            align-items: center;
+        }
+        
+        .product-features li i {
+            color: #ff9e00;
+            margin-right: 10px;
+            width: 20px;
+        }
+        
+        .product-btn {
+            display: block;
+            width: 100%;
+            text-align: center;
+            padding: 12px;
+            background: #1e3658;
+            color: #e0e1dd;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: 1px solid #415a77;
+        }
+        
+        .product-btn:hover {
+            background: #2a4b7c;
+            border-color: #ff9e00;
+            color: #ff9e00;
+        }
+        
+        /* Obrazac za ponudu - sakriven na početku */
+        .quote-section {
+            display: none;
+            padding: 100px 20px;
         }
         
         .container {
             max-width: 1200px;
-            margin: 40px auto;
+            margin: 0 auto;
             background: rgba(26, 36, 47, 0.9);
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
@@ -31,6 +308,103 @@
             border: 1px solid #415a77;
         }
         
+        /* Stranica za zahvalu */
+        .thank-you-section {
+            display: none;
+            padding: 100px 20px;
+        }
+        
+        .thank-you-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(26, 36, 47, 0.9);
+            border-radius: 15px;
+            padding: 50px;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            border: 1px solid #415a77;
+        }
+        
+        .thank-you-icon {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(to right, #ff9e00, #ff6b00);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            font-size: 60px;
+            color: #0d1b2a;
+            box-shadow: 0 10px 25px rgba(255, 158, 0, 0.4);
+        }
+        
+        .thank-you-title {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            color: #ffffff;
+        }
+        
+        .thank-you-subtitle {
+            font-size: 1.6rem;
+            color: #ff9e00;
+            margin-bottom: 30px;
+        }
+        
+        .thank-you-text {
+            font-size: 1.2rem;
+            color: #a3b3cc;
+            margin-bottom: 40px;
+            line-height: 1.7;
+        }
+        
+        .next-steps {
+            background: rgba(16, 28, 43, 0.7);
+            padding: 25px;
+            border-radius: 10px;
+            margin: 30px 0;
+            border: 1px solid #2a4365;
+            text-align: left;
+        }
+        
+        .next-steps-title {
+            font-size: 1.5rem;
+            color: #ff9e00;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .next-steps-list {
+            list-style: none;
+            padding-left: 10px;
+        }
+        
+        .next-steps-list li {
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+            font-size: 1.1rem;
+        }
+        
+        .next-steps-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 24px;
+            height: 24px;
+            background: #1e3658;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ff9e00;
+            font-weight: bold;
+        }
+        
+        /* Ostali stilovi za obrazac */
         .header {
             background: linear-gradient(to right, #1b3a5e, #0d1b2a);
             padding: 20px 30px;
@@ -53,7 +427,7 @@
             z-index: 0;
         }
         
-        .logo-container {
+        .form-logo-container {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -62,12 +436,12 @@
             z-index: 1;
         }
         
-        .logo {
+        .form-logo {
             height: 70px;
             margin-right: 15px;
         }
         
-        .company-name {
+        .form-company-name {
             font-size: 36px;
             font-weight: bold;
             color: #e0e1dd;
@@ -75,7 +449,7 @@
             letter-spacing: 1px;
         }
         
-        .company-name .highlight {
+        .form-company-name .highlight {
             color: #ff9e00;
         }
         
@@ -160,7 +534,7 @@
             border: 1px solid #2a4365;
         }
         
-        .section-title {
+        .section-title-form {
             font-size: 1.6rem;
             margin-bottom: 25px;
             padding-bottom: 15px;
@@ -170,7 +544,7 @@
             align-items: center;
         }
         
-        .section-title i {
+        .section-title-form i {
             margin-right: 10px;
             color: #ff9e00;
         }
@@ -227,7 +601,8 @@
         }
         
         .form-group input,
-        .form-group select {
+        .form-group select,
+        .form-group textarea {
             width: 100%;
             padding: 14px;
             border: 1px solid #415a77;
@@ -239,7 +614,8 @@
         }
         
         .form-group input:focus,
-        .form-group select:focus {
+        .form-group select:focus,
+        .form-group textarea:focus {
             outline: none;
             border-color: #ff9e00;
             box-shadow: 0 0 0 3px rgba(255, 158, 0, 0.2);
@@ -425,6 +801,7 @@
             font-size: 0.9rem;
         }
         
+        /* Responsive design */
         @media (max-width: 768px) {
             .content {
                 flex-direction: column;
@@ -452,241 +829,463 @@
                 gap: 25px;
             }
             
-            .logo-container {
+            .form-logo-container {
                 flex-direction: column;
                 text-align: center;
             }
             
-            .logo {
+            .form-logo {
                 margin-right: 0;
                 margin-bottom: 15px;
+            }
+            
+            .navbar {
+                flex-direction: column;
+                padding: 15px;
+            }
+            
+            .nav-links {
+                margin-top: 15px;
+                gap: 15px;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .thank-you-container {
+                padding: 30px 20px;
+            }
+            
+            .thank-you-title {
+                font-size: 2.2rem;
+            }
+            
+            .thank-you-subtitle {
+                font-size: 1.3rem;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <div class="logo-container">
-                <!-- Logo firme ROLKOM.ba -->
-                <img  src="logo.png" alt="ROLKOM Logo" class="logo">
-            </div>
-            <h1>Zahtjev za ponudu</h1>
-            <p>Odaberite proizvode koje želite, dodajte ih u listu, te pošaljite zahtjev za ponudu. Naš tim će vam dostaviti personaliziranu ponudu u roku od 24 sata.</p>
-            
-            <div class="timeline">
-                <div class="step">
-                    <div class="step-icon"><i class="fas fa-1"></i></div>
-                    <div class="step-text">Odaberite proizvode</div>
-                </div>
-                <div class="step">
-                    <div class="step-icon"><i class="fas fa-2"></i></div>
-                    <div class="step-text">Dodajte u listu</div>
-                </div>
-                <div class="step">
-                    <div class="step-icon"><i class="fas fa-3"></i></div>
-                    <div class="step-text">Pošaljite zahtjev</div>
-                </div>
-                <div class="step">
-                    <div class="step-icon"><i class="fas fa-4"></i></div>
-                    <div class="step-text">Primite ponudu</div>
+    <!-- Navigacijska traka -->
+    <nav class="navbar">
+        <div class="logo-container">
+            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiB2aWV3Qm94PSIwIDAgMTAwIDEwMCI+CiAgPHJlY3Qgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMDAiIGZpbGw9IiMxYjNhNWUiIHJ4PSIxMCIvPgogIDx0ZXh0IHg9IjUwIiB5PSI1MCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjIwIiBmaWxsPSIjZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIj5ST0xLT008L3RleHQ+Cjwvc3ZnPg==" alt="ROLKOM Logo" class="logo">
+            <div class="company-name">ROLKOM<span class="highlight">.ba</span></div>
+        </div>
+        <div class="nav-links">
+            <a href="#" id="home-link" class="active">Početna</a>
+            <a href="#" id="quote-link">Zahtjev za ponudu</a>
+        </div>
+    </nav>
+
+    <!-- Početna stranica -->
+    <section id="home-page">
+        <!-- Hero sekcija -->
+        <div class="hero">
+            <div class="hero-content">
+                <h1>Roletne i komarnici po mjeri</h1>
+                <p>Visokokvalitetna rješenja za zaštitu od sunca i insekata. Naši proizvodi su izrađeni od najkvalitetnijih materijala s posebnim naglaskom na preciznost i trajnost.</p>
+                <div>
+                    <a href="#" class="cta-btn" id="hero-quote-btn">Zatražite ponudu</a>
+                    <a href="#" class="cta-btn secondary-btn">Saznajte više</a>
                 </div>
             </div>
         </div>
-        
-        <div class="content">
-            <div class="product-selection">
-                <h2 class="section-title"><i class="fas fa-box-open"></i>Odaberite proizvod</h2>
-                
-                <div class="product-type">
-                    <label>Vrsta proizvoda:</label>
-                    <div class="radio-group">
-                        <div class="radio-option selected" data-value="roletna">
-                            <i class="fas fa-blinds fa-2x"></i>
-                            <div>Roletne</div>
-                        </div>
-                        <div class="radio-option" data-value="komarnik">
-                            <i class="fas fa-border-all fa-2x"></i>
-                            <div>Komarnici</div>
-                        </div>
+
+        <!-- Sekcija s proizvodima -->
+        <div class="section">
+            <h2 class="section-title">Naši proizvodi</h2>
+            <div class="products">
+                <!-- Roletne -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <i class="fas fa-blinds"></i>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Roletne</h3>
+                        <ul class="product-features">
+                            <li><i class="fas fa-check-circle"></i> Izolacija od topline i hladnoće</li>
+                            <li><i class="fas fa-check-circle"></i> Zaštita od UV zraka</li>
+                            <li><i class="fas fa-check-circle"></i> Povećanje energetske učinkovitosti</li>
+                            <li><i class="fas fa-check-circle"></i> Poticanje privatnosti</li>
+                        </ul>
+                        <a href="#" class="product-btn quote-product" data-product="roletne">Zatražite ponudu</a>
                     </div>
                 </div>
                 
-                <!-- Roletna forma -->
-                <div id="roletna-form" class="product-form">
-                    <div class="form-group">
-                        <label for="boja-roletne"><i class="fas fa-palette"></i> Boja roletne:</label>
-                        <select id="boja-roletne">
-                            <option value="bijela">Bijela</option>
-                            <option value="siva">Siva</option>
-                            <option value="smedja">Smeđa</option>
-                            <option value="ral">RAL boja (odabir po uzorku)</option>
-                        </select>
+                <!-- Komarnici -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <i class="fas fa-border-all"></i>
                     </div>
-                    
-                    <div class="dimensions">
-                        <div class="form-group">
-                            <label for="sirina-roletne"><i class="fas fa-arrows-alt-h"></i> Širina (cm):</label>
-                            <input type="number" id="sirina-roletne" min="50" max="300" placeholder="Unesite širinu">
-                        </div>
-                        <div class="form-group">
-                            <label for="visina-roletne"><i class="fas fa-arrows-alt-v"></i> Visina (cm):</label>
-                            <input type="number" id="visina-roletne" min="50" max="300" placeholder="Unesite visinu">
-                        </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Komarnici</h3>
+                        <ul class="product-features">
+                            <li><i class="fas fa-check-circle"></i> Zaštita od insekata</li>
+                            <li><i class="fas fa-check-circle"></i> Prozračnost i prirodno svjetlo</li>
+                            <li><i class="fas fa-check-circle"></i> Lako održavanje i čišćenje</li>
+                            <li><i class="fas fa-check-circle"></i> Različiti tipovi montaže</li>
+                        </ul>
+                        <a href="#" class="product-btn quote-product" data-product="komarnici">Zatražite ponudu</a>
                     </div>
-                    
-                    <div class="form-group">
-                        <label for="kolicina-roletne"><i class="fas fa-cube"></i> Količina:</label>
-                        <input type="number" id="kolicina-roletne" min="1" value="1">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="pogon-roletne"><i class="fas fa-cogs"></i> Pogon:</label>
-                        <select id="pogon-roletne">
-                            <option value="gurtna">Gurtna</option>
-                            <option value="spaga">Špaga</option>
-                            <option value="motor">Motor</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="strana-pogona"><i class="fas fa-exchange-alt"></i> Strana pogona:</label>
-                        <select id="strana-pogona">
-                            <option value="desno">Desno (pogled iznutra)</option>
-                            <option value="lijevo">Lijevo (pogled iznutra)</option>
-                        </select>
-                    </div>
-                    
-                    <button class="btn" id="dodaj-roletnu"><i class="fas fa-plus-circle"></i> Dodaj roletnu</button>
                 </div>
                 
-                <!-- Komarnik forma -->
-                <div id="komarnik-form" class="product-form" style="display: none;">
-                    <div class="form-group">
-                        <label for="tip-komarnika"><i class="fas fa-th-large"></i> Tip komarnika:</label>
-                        <select id="tip-komarnika">
-                            <option value="harmo">Harmo - plise komarnik</option>
-                            <option value="utapajuci">Fiksni utapajući komarnik (montaža iznutra)</option>
-                            <option value="obicni">Fiksni obični (montaža izvana)</option>
-                        </select>
+                <!-- Kombinacija -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <i class="fas fa-sync-alt"></i>
                     </div>
-                    
-                    <div class="form-group">
-                        <label for="boja-komarnika"><i class="fas fa-palette"></i> Boja komarnika:</label>
-                        <select id="boja-komarnika">
-                            <option value="bijela">Bijela</option>
-                            <option value="siva">Siva</option>
-                            <option value="smedja">Smeđa</option>
-                            <option value="ral">RAL boja (odabir po uzorku)</option>
-                        </select>
+                    <div class="product-content">
+                        <h3 class="product-title">Kombinacija</h3>
+                        <ul class="product-features">
+                            <li><i class="fas fa-check-circle"></i> Kombinacija roletni i komarnika</li>
+                            <li><i class="fas fa-check-circle"></i> Optimalna zaštita i udobnost</li>
+                            <li><i class="fas fa-check-circle"></i> Estetski ujednačen izgled</li>
+                            <li><i class="fas fa-check-circle"></i> Povoljnija cijena</li>
+                        </ul>
+                        <a href="#" class="product-btn quote-product" data-product="kombinacija">Zatražite ponudu</a>
                     </div>
-                    
-                    <div class="dimensions">
-                        <div class="form-group">
-                            <label for="sirina-komarnika"><i class="fas fa-arrows-alt-h"></i> Širina (cm):</label>
-                            <input type="number" id="sirina-komarnika" min="30" max="200" placeholder="Unesite širinu">
-                        </div>
-                        <div class="form-group">
-                            <label for="visina-komarnika"><i class="fas fa-arrows-alt-v"></i> Visina (cm):</label>
-                            <input type="number" id="visina-komarnika" min="30" max="200" placeholder="Unesite visinu">
-                        </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Plutajuće dugme -->
+    <a href="#" class="fab" id="fab-quote-btn">
+        <i class="fas fa-file-invoice-dollar"></i>
+    </a>
+
+    <!-- Sekcija za zahtjev za ponudu (sakrivena na početku) -->
+    <section id="quote-page" class="quote-section">
+        <div class="container">
+            <div class="header">
+                <div class="form-logo-container">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiB2aWV3Qm94PSIwIDAgMTAwIDEwMCI+CiAgPHJlY3Qgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMDAi fill="white" fliZmlsbD0iIzFiM2E1ZSIgcng9IjEwIi8+CiAgPHRleHQgeD0iNTAiIHk9IjUwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMjAiIGZpbGw9IiNmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiPlJPTEtPTTwvdGV4dD4KPC9zdmc+" alt="ROLKOM Logo" class="form-logo">
+                    <div class="form-company-name">ROLKOM<span class="highlight">.ba</span></div>
+                </div>
+                <h1>Zahtjev za ponudu</h1>
+                <p>Odaberite proizvode koje želite, dodajte ih u listu, te pošaljite zahtjev za ponudu. Naš tim će vam dostaviti personaliziranu ponudu u roku od 24 sata.</p>
+                
+                <div class="timeline">
+                    <div class="step">
+                        <div class="step-icon"><i class="fas fa-1"></i></div>
+                        <div class="step-text">Odaberite proizvode</div>
                     </div>
-                    
-                    <div class="form-group">
-                        <label for="kolicina-komarnika"><i class="fas fa-cube"></i> Količina:</label>
-                        <input type="number" id="kolicina-komarnika" min="1" value="1">
+                    <div class="step">
+                        <div class="step-icon"><i class="fas fa-2"></i></div>
+                        <div class="step-text">Dodajte u listu</div>
                     </div>
-                    
-                    <button class="btn" id="dodaj-komarnik"><i class="fas fa-plus-circle"></i> Dodaj komarnik</button>
+                    <div class="step">
+                        <div class="step-icon"><i class="fas fa-3"></i></div>
+                        <div class="step-text">Pošaljite zahtjev</div>
+                    </div>
+                    <div class="step">
+                        <div class="step-icon"><i class="fas fa-4"></i></div>
+                        <div class="step-text">Primite ponudu</div>
+                    </div>
                 </div>
             </div>
             
-            <div class="product-list">
-                <h2 class="section-title"><i class="fas fa-clipboard-list"></i>Vaša lista proizvoda</h2>
-                
-                <div class="items-container" id="items-container">
-                    <div class="empty-items">
-                        <i class="fas fa-box-open"></i>
-                        Trenutno nemate proizvoda u listi.<br>Dodajte proizvode koristeći obrazac lijevo.
-                    </div>
-                </div>
-                
-                <div class="summary">
-                    <div class="summary-item">
-                        <span>Ukupno stavki:</span>
-                        <span id="total-items">0</span>
-                    </div>
-                    <div class="summary-item">
-                        <span>Ukupna površina:</span>
-                        <span id="total-area">0 m²</span>
-                    </div>
-                    <div class="summary-item total">
-                        <span>Ponuda će biti poslana:</span>
-                        <span>u roku od 24h</span>
-                    </div>
-                </div>
-                
-                <div class="notification">
-                    <p><i class="fas fa-info-circle"></i> Nakon što dodate sve proizvode koje želite, unesite svoje kontakt podatke i pošaljite zahtjev za ponudu.</p>
-                </div>
-                
-                <div class="contact-form">
-                    <h2 class="section-title"><i class="fas fa-user"></i>Kontakt podaci</h2>
+            <div class="content">
+                <div class="product-selection">
+                    <h2 class="section-title-form"><i class="fas fa-box-open"></i>Odaberite proizvod</h2>
                     
-                    <form id="quote-form" action="https://formsubmit.co/harunhotic@outlook.com" method="POST">
-                        <input type="hidden" name="_subject" value="Novi zahtjev za ponudu - ROLKOM.ba">
-                        <input type="hidden" name="_template" value="table">
-                        <input type="hidden" name="proizvodi" id="proizvodi-input">
-                        
+                    <div class="product-type">
+                        <label>Vrsta proizvoda:</label>
+                        <div class="radio-group">
+                            <div class="radio-option selected" data-value="roletna">
+                                <i class="fas fa-blinds fa-2x"></i>
+                                <div>Roletne</div>
+                            </div>
+                            <div class="radio-option" data-value="komarnik">
+                                <i class="fas fa-border-all fa-2x"></i>
+                                <div>Komarnici</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Roletna forma -->
+                    <div id="roletna-form" class="product-form">
                         <div class="form-group">
-                            <label for="ime"><i class="fas fa-user"></i> Ime i prezime:</label>
-                            <input type="text" id="ime" name="ime" required>
+                            <label for="boja-roletne"><i class="fas fa-palette"></i> Boja roletne:</label>
+                            <select id="boja-roletne">
+                                <option value="bijela">Bijela</option>
+                                <option value="siva">Siva</option>
+                                <option value="smedja">Smeđa</option>
+                                <option value="ral">RAL boja (odabir po uzorku)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="dimensions">
+                            <div class="form-group">
+                                <label for="sirina-roletne"><i class="fas fa-arrows-alt-h"></i> Širina (cm):</label>
+                                <input type="number" id="sirina-roletne" min="50" max="300" placeholder="Unesite širinu">
+                            </div>
+                            <div class="form-group">
+                                <label for="visina-roletne"><i class="fas fa-arrows-alt-v"></i> Visina (cm):</label>
+                                <input type="number" id="visina-roletne" min="50" max="300" placeholder="Unesite visinu">
+                            </div>
                         </div>
                         
                         <div class="form-group">
-                            <label for="email"><i class="fas fa-envelope"></i> Email adresa:</label>
-                            <input type="email" id="email" name="email">
+                            <label for="kolicina-roletne"><i class="fas fa-cube"></i> Količina:</label>
+                            <input type="number" id="kolicina-roletne" min="1" value="1">
                         </div>
                         
                         <div class="form-group">
-                            <label for="telefon"><i class="fas fa-phone"></i> Broj telefona:</label>
-                            <input type="tel" id="telefon" name="telefon">
+                            <label for="pogon-roletne"><i class="fas fa-cogs"></i> Pogon:</label>
+                            <select id="pogon-roletne">
+                                <option value="gurtna">Gurtna</option>
+                                <option value="spaga">Špaga</option>
+                                <option value="motor">Motor</option>
+                            </select>
                         </div>
                         
                         <div class="form-group">
-                            <label for="poruka"><i class="fas fa-comment"></i> Dodatne napomene (opcionalno):</label>
-                            <textarea id="poruka" name="poruka" rows="3"></textarea>
+                            <label for="strana-pogona"><i class="fas fa-exchange-alt"></i> Strana pogona:</label>
+                            <select id="strana-pogona">
+                                <option value="desno">Desno (pogled iznutra)</option>
+                                <option value="lijevo">Lijevo (pogled iznutra)</option>
+                            </select>
                         </div>
                         
-                        <button type="submit" class="btn"><i class="fas fa-paper-plane"></i> Zatraži ponudu</button>
-                    </form>
+                        <button class="btn" id="dodaj-roletnu"><i class="fas fa-plus-circle"></i> Dodaj roletnu</button>
+                    </div>
+                    
+                    <!-- Komarnik forma -->
+                    <div id="komarnik-form" class="product-form" style="display: none;">
+                        <div class="form-group">
+                            <label for="tip-komarnika"><i class="fas fa-th-large"></i> Tip komarnika:</label>
+                            <select id="tip-komarnika">
+                                <option value="harmo">Harmo - plise komarnik</option>
+                                <option value="utapajuci">Fiksni utapajući komarnik (montaža iznutra)</option>
+                                <option value="obicni">Fiksni obični (montaža izvana)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="boja-komarnika"><i class="fas fa-palette"></i> Boja komarnika:</label>
+                            <select id="boja-komarnika">
+                                <option value="bijela">Bijela</option>
+                                <option value="siva">Siva</option>
+                                <option value="smedja">Smeđa</option>
+                                <option value="ral">RAL boja (odabir po uzorku)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="dimensions">
+                            <div class="form-group">
+                                <label for="sirina-komarnika"><i class="fas fa-arrows-alt-h"></i> Širina (cm):</label>
+                                <input type="number" id="sirina-komarnika" min="30" max="200" placeholder="Unesite širinu">
+                            </div>
+                            <div class="form-group">
+                                <label for="visina-komarnika"><i class="fas fa-arrows-alt-v"></i> Visina (cm):</label>
+                                <input type="number" id="visina-komarnika" min="30" max="200" placeholder="Unesite visinu">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="kolicina-komarnika"><i class="fas fa-cube"></i> Količina:</label>
+                            <input type="number" id="kolicina-komarnika" min="1" value="1">
+                        </div>
+                        
+                        <button class="btn" id="dodaj-komarnik"><i class="fas fa-plus-circle"></i> Dodaj komarnik</button>
+                    </div>
+                </div>
+                
+                <div class="product-list">
+                    <h2 class="section-title-form"><i class="fas fa-clipboard-list"></i>Vaša lista proizvoda</h2>
+                    
+                    <div class="items-container" id="items-container">
+                        <div class="empty-items">
+                            <i class="fas fa-box-open"></i>
+                            Trenutno nemate proizvoda u listi.<br>Dodajte proizvode koristeći obrazac lijevo.
+                        </div>
+                    </div>
+                    
+                    <div class="summary">
+                        <div class="summary-item">
+                            <span>Ukupno stavki:</span>
+                            <span id="total-items">0</span>
+                        </div>
+                        <div class="summary-item">
+                            <span>Ukupna površina:</span>
+                            <span id="total-area">0 m²</span>
+                        </div>
+                        <div class="summary-item total">
+                            <span>Ponuda će biti poslana:</span>
+                            <span>u roku od 24h</span>
+                        </div>
+                    </div>
+                    
+                    <div class="notification">
+                        <p><i class="fas fa-info-circle"></i> Nakon što dodate sve proizvode koje želite, unesite svoje kontakt podatke i pošaljite zahtjev za ponudu.</p>
+                    </div>
+                    
+                    <div class="contact-form">
+                        <h2 class="section-title-form"><i class="fas fa-user"></i>Kontakt podaci</h2>
+                        
+                        <!-- OVDJE JE KLJUČNA PROMJENA: Dodan action i method -->
+                        <form id="quote-form" action="spremi_zahtjev.php" method="POST">
+                            <!-- Skriveno polje za proizvode -->
+                            <input type="hidden" name="proizvodi" id="proizvodi-input">
+                            
+                            <div class="form-group">
+                                <label for="ime"><i class="fas fa-user"></i> Ime i prezime:</label>
+                                <input type="text" id="ime" name="ime" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email"><i class="fas fa-envelope"></i> Email adresa:</label>
+                                <input type="email" id="email" name="email">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="telefon"><i class="fas fa-phone"></i> Broj telefona:</label>
+                                <input type="tel" id="telefon" name="telefon">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="poruka"><i class="fas fa-comment"></i> Dodatne napomene (opcionalno):</label>
+                                <textarea id="poruka" name="poruka" rows="3"></textarea>
+                            </div>
+                            
+                            <button type="submit" class="btn"><i class="fas fa-paper-plane"></i> Zatraži ponudu</button>
+                        </form>
+                    </div>
                 </div>
             </div>
+            
+            <div class="quote-note">
+                <i class="fas fa-lock"></i> Vaše informacije su sigurne. Cijene su dostupne samo našem timu.
+            </div>
+            
+            <div class="footer">
+                <p>ROLKOM.ba &copy; 2025 | Komarnici i roletne po mjeri | Sva prava pridržana</p>
+            </div>
         </div>
-        
-        <div class="quote-note">
-            <i class="fas fa-lock"></i> Vaše informacije su sigurne. Cijene su dostupne samo našem timu.
+    </section>
+
+    <!-- Stranica za zahvalu -->
+    <section id="thank-you-page" class="thank-you-section">
+        <div class="thank-you-container">
+            <div class="thank-you-icon">
+                <i class="fas fa-check"></i>
+            </div>
+            <h1 class="thank-you-title">Hvala vam!</h1>
+            <h2 class="thank-you-subtitle">Vaš zahtjev je uspješno poslan</h2>
+            <p class="thank-you-text">
+                Zahvaljujemo vam što ste odabrali ROLKOM.ba. Naš tim će obraditi vaš zahtjev i kontaktirati vas s personaliziranom ponudom u roku od 24 sata. Ako imate bilo kakvih dodatnih pitanja, slobodno nas kontaktirajte.
+            </p>
+            
+            <div class="next-steps">
+                <h3 class="next-steps-title"><i class="fas fa-tasks"></i> Što možete očekivati sljedeće?</h3>
+                <ul class="next-steps-list">
+                    <li>Naš tim će pregledati vaš zahtjev i izračunati najpovoljniju ponudu</li>
+                    <li>Dobit ćete personaliziranu ponudu putem e-maila ili telefona</li>
+                    <li>Moguće je dogovoriti besplatnu procjenu na licu mjesta</li>
+                    <li>Nakon odabira ponude, dogovorit ćemo termin montaže</li>
+                </ul>
+            </div>
+            
+            <a href="#" class="cta-btn" id="back-to-home"><i class="fas fa-home"></i> Povratak na početnu stranicu</a>
         </div>
-        
-        <div class="footer">
-            <p>ROLKOM.ba &copy; 2023 | Komarnici i roletne po mjeri | Sva prava pridržana</p>
-        </div>
-    </div>
+    </section>
 
     <script>
-        // Promjena tipa proizvoda
+        // Navigacija
+        const homeLink = document.getElementById('home-link');
+        const quoteLink = document.getElementById('quote-link');
+        const homePage = document.getElementById('home-page');
+        const quotePage = document.getElementById('quote-page');
+        const thankYouPage = document.getElementById('thank-you-page');
+        const fabBtn = document.getElementById('fab-quote-btn');
+        const heroQuoteBtn = document.getElementById('hero-quote-btn');
+        const productBtns = document.querySelectorAll('.quote-product');
+        const backToHomeBtn = document.getElementById('back-to-home');
+        
+        // Funkcija za prikaz početne stranice
+        function showHomePage() {
+            homePage.style.display = 'block';
+            quotePage.style.display = 'none';
+            thankYouPage.style.display = 'none';
+            homeLink.classList.add('active');
+            quoteLink.classList.remove('active');
+        }
+        
+        // Funkcija za prikaz obrazca za ponudu
+        function showQuotePage() {
+            homePage.style.display = 'none';
+            quotePage.style.display = 'block';
+            thankYouPage.style.display = 'none';
+            homeLink.classList.remove('active');
+            quoteLink.classList.add('active');
+            
+            // Pomakni se na vrh stranice
+            window.scrollTo(0, 0);
+        }
+        
+        // Funkcija za prikaz stranice za zahvalu
+        function showThankYouPage() {
+            homePage.style.display = 'none';
+            quotePage.style.display = 'none';
+            thankYouPage.style.display = 'block';
+            homeLink.classList.remove('active');
+            quoteLink.classList.remove('active');
+            
+            // Pomakni se na vrh stranice
+            window.scrollTo(0, 0);
+        }
+        
+        // Event listeneri za navigaciju
+        homeLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            showHomePage();
+        });
+        
+        quoteLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            showQuotePage();
+        });
+        
+        fabBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            showQuotePage();
+        });
+        
+        heroQuoteBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            showQuotePage();
+        });
+        
+        backToHomeBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            showHomePage();
+        });
+        
+        productBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                showQuotePage();
+            });
+        });
+        
+        // Funkcionalnost forme za ponudu
         const radioOptions = document.querySelectorAll('.radio-option');
         const roletnaForm = document.getElementById('roletna-form');
         const komarnikForm = document.getElementById('komarnik-form');
         
         radioOptions.forEach(option => {
             option.addEventListener('click', () => {
-                // Ukloni selektirani status sa svih opcija
                 radioOptions.forEach(opt => opt.classList.remove('selected'));
-                // Dodaj selektirani status na odabranu opciju
                 option.classList.add('selected');
                 
-                // Prikaži odgovarajući formular
                 if (option.dataset.value === 'roletna') {
                     roletnaForm.style.display = 'block';
                     komarnikForm.style.display = 'none';
@@ -867,7 +1466,7 @@
             return pogoni[pogon] || pogon;
         }
         
-        // Validacija forme
+        // Validacija forme i slanje podataka
         document.getElementById('quote-form').addEventListener('submit', function(e) {
             const email = document.getElementById('email').value;
             const telefon = document.getElementById('telefon').value;
@@ -885,18 +1484,12 @@
             }
             
             // Priprema podataka o proizvodima za slanje
-            const proizvodiText = items.map(item => {
-                if (item.type === 'Roletna') {
-                    return `Roletna:\n- Boja: ${item.boja}\n- Dimenzije: ${item.sirina}cm × ${item.visina}cm\n- Pogon: ${item.pogon}\n- Strana: ${item.strana}\n- Količina: ${item.kolicina}\n- Površina: ${item.povrsina} m²`;
-                } else {
-                    return `Komarnik (${item.tip}):\n- Boja: ${item.boja}\n- Dimenzije: ${item.sirina}cm × ${item.visina}cm\n- Količina: ${item.kolicina}\n- Površina: ${item.povrsina} m²`;
-                }
-            }).join('\n\n');
-            
+            const proizvodiText = JSON.stringify(items);
             document.getElementById('proizvodi-input').value = proizvodiText;
             
-            // Prikaži poruku o uspješnom slanju
-            alert('Vaš zahtjev za ponudu je uspješno poslan! Kontaktirat ćemo vas u roku od 24 sata s ponudom.');
+            // Ako je validacija prošla, forma će se normalno poslati na spremi_zahtjev.php
+            // Nakon slanja, prikazat ćemo stranicu za zahvalu
+            // Ovo je postignuto server-side preusmjeravanjem
         });
     </script>
 </body>
